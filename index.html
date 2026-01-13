@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS v5.2.1 -->
+    <link href="assets/css/index.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -26,77 +27,121 @@
         </nav>
 
     </header>
-    <main class="container text-center">
-        <section class="container">
-            <form action="cv.php" method="post">
-                <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w-50">
-                    <h2>Information Générales</h2>
-                    <hr class="w-50 mx-auto">
-                    <label class="form-label" for="nom">Nom*</label>
-                    <input class="form-control" id="nom" name="nom" type="text" required>
-                    <label class="form-label" for="prenom">Prénom*</label>
-                    <input class="form-control" name="prenom" id="prenom" type="text" required>
-                    <label class="form-label" for="headline">Titre Professionnel*</label>
-                    <input class="form-control" id="headline" name="headline" type="text" required>
-                    <label class="form-label" for="email">Email*</label>
-                    <input class="form-control" name="email" id="email" type="email" required>
-                    <label class="form-label" for="numero">Téléphone*</label>
-                    <input class="form-control" name="numero" id="numero" value="+33" autocomplete="off" type="tel"
-                        pattern="[0-9]{9}" title="Veuillez entrer 9 chiffres après le code pays">
-                    <label class="form-label" for="description">Description/Résumé professionnel</label>
-                    <textarea class="form-control" name="description" id="description"></textarea>
+    <main class="container-fluid text-center">
+        <div class="row px-md-5">
+            <section class="col-lg-6">
+                <form action="cv.php" method="post">
+                    <div class="container mb-4 p-4 border border-3 border-primary rounded-4 shadow-sm bg-body-tertiary">
+                        <h2>Information Générales</h2>
+                        <hr class="w-50 border-3 mx-auto border-success">
+                        <label class="form-label" for="nom">Nom*</label>
+                        <input class="form-control w-75 mb-3 mx-auto" id="nom" name="nom" type="text" required>
+                        <label class="form-label" for="prenom">Prénom*</label>
+                        <input class="form-control w-75 mb-3 mx-auto" name="prenom" id="prenom" type="text" required>
+                        <label class="form-label" for="headline">Titre Professionnel*</label>
+                        <input class="form-control w-75 mb-3 mx-auto" id="headline" name="headline" type="text"
+                            required>
+                        <label class="form-label" for="email">Email*</label>
+                        <input class="form-control w-75 mb-3 mx-auto" name="email" id="email" type="email" required>
+                        <label class="form-label" for="numero">Téléphone*</label>
+                        <input class="form-control w-75 mb-3 mx-auto" name="numero" id="numero" value="+33"
+                            autocomplete="off" type="tel" pattern="[0-9]{9}"
+                            title="Veuillez entrer 9 chiffres après le code pays">
+                        <label class="form-label" for="description">Description/Résumé professionnel</label>
+                        <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description"
+                            id="description"></textarea>
+                    </div>
+                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="exp">
+                        <h2>Expériences professionnelles</h2>
+                        <hr class="w-50 border-3 mx-auto border-success">
+                        <div id="bloc-exp">
+                            <label class="form-label" for="poste">Intitulé du poste*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="text" name="poste" id="poste" required>
+                            <label class="form-label" for="entreprise">Nom de l'entreprise*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="text" name="entreprise" id="entreprise"
+                                required>
+                            <label class="form-label" for="date">Date de début*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="date" name="date" id="date" required>
+                            <label class="form-label" for="fin">Date de fin</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="date" name="fin" id="fin">
+                            <label class="form-label" for="description-mission">Description des missions</label>
+                            <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-mission"
+                                id="description-mission"></textarea>
+                        </div>
+                        <button id="add-exp" class="btn btn-success mb-2">Ajouter une expérience</button>
+                    </div>
+
+
+                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="form">
+                        <h2>Formations</h2>
+                        <hr class="w-50 border-3 mx-auto border-success">
+                        <div id="bloc-fomation">
+                            <label class="form-label" for="formation">Intitulé du diplôme ou de la formation*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="text" name="formation" id="formation"
+                                required>
+                            <label class="form-label" for="etablissement">Établissement*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="text" name="etablissement"
+                                id="etablissement" required>
+                            <label class="form-label" for="date">Date de début*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="date" name="date" id="date" required>
+                            <label class="form-label" for="fin">Date de fin</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="date" name="fin" id="fin">
+                            <label class="form-label" for="description-formation">Description</label>
+                            <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-formation"
+                                id="description-formation"></textarea>
+                        </div>
+                        <button id="add-form" class="btn btn-success mb-2">Ajouter une formation</button>
+                    </div>
+
+                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="comp">
+                        <h2>Compétences</h2>
+                        <hr class="w-50 border-3 mx-auto border-success">
+                        <div id="bloc-competence">
+                            <label class="form-label" for="formation">Intitulé du diplôme ou de la formation*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="text" name="formation" id="formation"
+                                required>
+                            <select class="form-select w-75 mx-auto">
+                                <option value="">--Choisissez votre niveau--</option>
+                                <option value="debutant">Débutant</option>
+                                <option value="intermedaire">Intermédaire</option>
+                                <option value="expert">Expert</option>
+                            </select>
+                        </div>
+                        <button id="add-comp" class="btn btn-success mb-2">Ajouter une compétance</button>
+                    </div>
+
+                </form>
+            </section>
+
+            <section class="col-lg-6">
+                <div class="sticky-top" style="top: 20px;">
+                    <h4 class="text-muted text-center mb-3">Aperçu en temps réel</h4>
+                    <div class="bg-white text-dark p-5 shadow-lg rounded mx-auto" id="previewea"
+                        style="min-height: 800px; max-width: 600px;">
+                        <div class="text-center mb-4 border-bottom pb-3">
+                            <h1 id="preview-nom-complet" class="fw-bold text-uppercase mb-1">NOM PRÉNOM</h1>
+                            <p id="preview-titre" class="h4 text-primary">Titre du poste</p>
+                            <div class="small text-muted mt-2">
+                                <span="preview-contact-email">email@exemple.com</span> |
+                                    <span id="preview-contact-tel">+33 0 00 00 00 00</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">PROFIL</h5>
+                            <p id="preview-desc-text" class="mt-2 small">Votre résumé professionnel s'affichera ici...
+                            </p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">EXPÉRIENCES</h5>
+                            <div id="preview-exp-list" class="mt-2 small">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w-50">
-                    <h2>Expériences professionnelles</h2>
-                    <hr class="w-50">
-                    <label class="form-label" for="poste">Intitulé du poste*</label>
-                    <input class="form-control" type="text" name="poste" id="poste" required>
-                    <label class="form-label" for="entreprise">Nom de l'entreprise*</label>
-                    <input class="form-control" type="text" name="entreprise" id="entreprise" required>
-                    <label class="form-label" for="date">Date de début*</label>
-                    <input class="form-control" type="date" name="date" id="date" required>
-                    <label class="form-label" for="fin">Date de fin</label>
-                    <input class="form-control" type="date" name="fin" id="fin">
-                    <label class="form-label" for="description-mission">Description des missions</label>
-                    <textarea class="form-control" name="description-mission" id="description-mission"></textarea>
-
-                    <button id="add-exp" class="btn btn-success mb-2">Ajouter une expérience</button>
-                </div>
-
-
-                <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w-50">
-                    <h2>Formations</h2>
-                    <hr class="w-50">
-                    <label class="form-label" for="formation">Intitulé du diplôme ou de la formation*</label>
-                    <input class="form-control" type="text" name="formation" id="formation" required>
-                    <label class="form-label" for="etablissement">Établissement*</label>
-                    <input class="form-control" type="text" name="etablissement" id="etablissement" required>
-                    <label class="form-label" for="date">Date de début*</label>
-                    <input class="form-control" type="date" name="date" id="date" required>
-                    <label class="form-label" for="fin">Date de fin</label>
-                    <input class="form-control" type="date" name="fin" id="fin">
-                    <label class="form-label" for="description-formation">Description</label>
-                    <textarea class="form-control" name="description-formation" id="description-formation"></textarea>
-                    <button id="add-exp" class="btn btn-success mb-2">Ajouter une formation</button>
-                </div>
-
-                <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w-50">
-                    <h2>Compétences</h2>
-                    <hr class="w-50">
-                    <label class="form-label" for="formation">Intitulé du diplôme ou de la formation*</label>
-                    <input class="form-control" type="text" name="formation" id="formation" required>
-                    <select class="form-select">
-                        <option value="">--Choisissez votre niveau--</option>
-                        <option value="debutant">Débutant</option>
-                        <option value="intermedaire">Intermédaire</option>
-                        <option value="expert">Expert</option>
-                    </select>
-                    <button id="add-exp" class="btn btn-success mb-2">Ajouter une compétance</button>
-                </div>
-
-            </form>
-        </section>
-
+            </section>
+        </div>
     </main>
     <footer>
 
