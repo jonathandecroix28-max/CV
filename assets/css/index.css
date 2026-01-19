@@ -1,3 +1,24 @@
 textarea {
     resize: none !important;
 }
+
+.sticky-preview {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sticky-preview::-webkit-scrollbar {
+    display: none;
+}
+
+.preview-focus {
+    background-color: rgba(13, 110, 253, 0.1);
+    outline: 2px dashed #0d6efd;
+    outline-offset: 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
