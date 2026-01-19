@@ -70,8 +70,8 @@
                                 id="description-mission" data-target="#p-desc-mission"></textarea>
                         </div>
                         <button data-type="exp" data-fields="poste,entreprise,missions,debut,fin"
-                            class="btn btn-success btn-add mb-2" data-template="temp-exp" data-source="#temp-exp"
-                            data-target="#p-exp-list">Ajouter une expérience</button>
+                            class="btn btn-success btn-add mb-2" data-template="temp-exp"
+                            data-source="#temp-exp">Ajouter une expérience</button>
                     </div>
 
 
@@ -101,22 +101,23 @@
                             formation</button>
                     </div>
 
-                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="comp">
+                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4" id="section-competence">
                         <h2>Compétences</h2>
-                        <div id="comp-form-list"></div>
-                        <hr class="w-50 border-3 mx-auto border-success">
-                        <div id="bloc-competence">
-                            <label class="form-label" for="formation">Intitulé du diplôme ou de la formation*</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-competence" name="formation" id="formation" required>
-                            <select class="form-select w-75 mx-auto mb-3" data-target="">
-                                <option value="">--Choisissez votre niveau--</option>
-                                <option value="debutant">Débutant</option>
-                                <option value="intermedaire">Intermédaire</option>
-                                <option value="expert">Expert</option>
-                            </select>
+
+                        <hr>
+                        <div id="bloc-saisie-comp">
+                            <label class="form-label" for="skills-input">Compétence*</label>
+                            <input class="form-control w-75 mb-3 mx-auto" type="text" id="skills-input"
+                                placeholder="ex: JavaScript" data-target="#p-competence">
+
+                            <div id="comp-form-list"></div>
                         </div>
-                        <button id="add-comp" class="btn btn-success mb-2">Ajouter une compétence</button>
+
+                        <button type="button" class="btn btn-success btn-add mb-2" data-type="comp"
+                            data-template="temp-comp" data-fields="competence">
+                            Ajouter une compétence
+                        </button>
+
                     </div>
 
                 </form>
@@ -171,15 +172,18 @@
                             <div id="formation-preview-list"></div>
                         </div>
 
-                        <div class="mb-4 bg-primary border border-3 border-success rounded-4">
-                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1" id="p-competence">
+                        <div class="mb-4 border border-3 border-success rounded-4">
+                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">
                                 Compétences</h5>
-                            <div class="progress mb-2" style="height: 8px">
-                                <div id="p-progress" class="progress-bar bg-secondary" style="width: 0%"></div>
-                                <div id="comp-preview-list"></div>
-                            </div>
+                            <div id="p-competence"></div>
+                            <!--- <div class="progress mb-2" style="height: 8px"> -->
+                            <!---     <div id="p-progress" class="progress-bar bg-secondary" style="width: 0%"></div>-->
+
+                            <!-- </div>-->
+                            <div id="comp-preview-list" class="mt-2"></div>
                         </div>
                     </div>
+                </div>
             </section>
         </div>
 
@@ -188,7 +192,7 @@
                 <div class="container mb-4 p-2 w">
                     <h3 class="text-primary m-0">Nouvelle Expérience</h3>
                     <hr class="border-success w-50 mx-auto border-3">
-                    <button type="button" class="btn-close btn-close-white remove-exp"></button>
+                    <button type="button" class="remove-exp">X</button>
                 </div>
 
                 <div>
@@ -233,7 +237,6 @@
                 <div class="container mb-4 p-2 w">
                     <h3 class="text-primary m-0">Nouvelle Formation</h3>
                     <hr class="border-success w-50 mx-auto border-3">
-                    <button type="button" class="btn-close btn-close-white remove-form"></button>
                 </div>
                 <div>
                     <div>
@@ -257,27 +260,33 @@
                             placeholder="Détaillez vos missions..."></textarea>
                     </div>
                 </div>
+                <button type="button" class="remove-formation">X</button>
             </div>
 
 
             <div class="preview-formation-item">
-                <h3 class="p-diplome" data-default="Intitulé du diplôme">Intitulé du diplôme</h3>
-                <p class="p-etablissement italic" data-default="Etablissement">Etablissement</p>
-                <p class="p-start" data-default="Date de début">Date de début</p>
-                <p class="p-end" data-default="Date de fin">Date de fin</p>
+                <h3 class="p-diplome" data-default="Intitulé du diplôme"></h3>
+                <p class="p-etablissement italic" data-default="Etablissement"></p>
+                <p class="p-start" data-default="Date de début"></p>
+                <p class="p-end" data-default="Date de fin"></p>
                 <p class="p-desc">Description</p>
             </div>
         </template>
 
         <template id="temp-comp">
-            <div class="comp-item mb-2">
-                <input class="form-control comp-nom" placeholder="Compétence (ex: JavaScript)">
+            <div class="comp-item">
+                <button type="button" class="remove-comp">X</button>
+                <input class="comp-competence">
             </div>
-
             <div class="preview-comp-item">
-                <span class="p-nom badge bg-primary"></span>
+                <span class="p-competence"></span>
             </div>
         </template>
+
+
+
+
+
 
     </main>
     <footer>

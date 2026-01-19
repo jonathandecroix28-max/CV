@@ -1,72 +1,51 @@
-//-----------------Dark-Mode--------------------\\
+// 1. DÉCLARATIONS DES VARIABLES GLOBALES (Nettoyées)
+const htmlElement = document.documentElement;
 const mode = document.getElementById("mode");
 const iconMode = document.getElementById("icon");
-const htmlElement = document.documentElement;
-//-----------------Buttons Adds----------------------\\
-const form = document.getElementById("form");
-const exp = document.getElementById("exp");
-const comp = document.getElementById("comp");
-const formation = document.getElementById("bloc-formation");
-const experience = document.getElementById("bloc-exp");
-const competence = document.getElementById("bloc-competence");
-const addExp = document.getElementById("add-exp");
-const addForm = document.getElementById("add-form");
-const addComp = document.getElementById("add-comp");
-//--------------Preview------------------\\
-const fullName = document.getElementById("p-full-name");
-const titre = document.getElementById("p-headline")
-const email = document.getElementById("p-email");
-const telephone = document.getElementById("p-numero");
-//------------Clonage---------------------\\
-//const template = document.getElementById("temp-exp");
-//const array = ['poste', 'entreprise', 'missions', 'debut', 'fin'];
 let compteur = 0;
-/*function ajouterExperience() {
-    compteur++;
-    const clone = template.content.cloneNode(true);
 
+// 2. INITIALISATION GÉNÉRALE (Le cerveau du script)
+window.addEventListener('DOMContentLoaded', () => {
+    console.log("🚀 Système prêt !");
 
-    const formBlock = clone.querySelector(".experience-item");
-    const previewBlock = clone.querySelector(".preview-exp-item");
+    // Écouteurs pour les boutons "Ajouter"
+    const boutonsAjout = document.querySelectorAll(".btn-add");
+    console.log("Boutons .btn-add trouvés :", boutonsAjout.length);
 
+    boutonsAjout.forEach(btn => {
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            const type = btn.dataset.type;
+            const templateID = btn.dataset.template;
+            const champs = btn.dataset.fields ? btn.dataset.fields.split(',') : [];
 
-    array.forEach(element => {
-        const cible = clone.querySelector(".p-" + element);
-        const source = clone.querySelector(".exp-" + element);
-
-        if (cible && source) {
-            const uniqueId = "p-" + element + "-" + compteur;
-            cible.id = uniqueId;
-            source.dataset.target = "#" + uniqueId;
-        } else {
-            console.warn(`Attention : l'élément .p-${element} ou .exp-${element} est introuvable dans le template.`);
-        }
-
+            console.log("➕ Ajout d'un élément type :", type);
+            ajouterElement(type, champs, templateID);
+        });
     });
 
+    // Lancement de la preview sur les éléments déjà présents au chargement
+    initPreview(document);
+    previewFocus();
 
-    document.getElementById("experience-form-list").appendChild(formBlock);
-    document.getElementById("formation-form-list").appendChild(formBlock);
-    document.getElementById("competence-form-list").appendChild(formBlock);
+    // Reset du formulaire au chargement
+    const formulaire = document.getElementById("my-form");
+    if (formulaire) formulaire.reset();
+});
 
-    document.getElementById("experience-preview-list").appendChild(previewBlock);
-    document.getElementById("formation-preview-list").appendChild(previewBlock);
-    document.getElementById("competence-preview-list").appendChild(previewBlock);
-
-    initPreview(formBlock);
-}*/
-
+// 3. FONCTION D'AJOUT DYNAMIQUE (Template)
 function ajouterElement(type, champs, templateID) {
     compteur++;
-
-    // 1. Trouve le bon template (ex: #temp-experience)
     const template = document.getElementById(templateID);
-    const clone = template.content.cloneNode(true);
+    if (!template) return console.error("Template introuvable :", templateID);
 
+    const clone = template.content.cloneNode(true);
     const formBlock = clone.querySelector("." + type + "-item");
     const previewBlock = clone.querySelector(".preview-" + type + "-item");
 
-    // 2. Parcourt les champs spécifiques à cette section
+    if (!formBlock || !previewBlock) return console.error("Structure du template incorrecte pour :", type);
+
+    // Liaison des champs
     champs.forEach(element => {
         const cible = clone.querySelector(".p-" + element);
         const source = clone.querySelector("." + type + "-" + element);
@@ -78,186 +57,106 @@ function ajouterElement(type, champs, templateID) {
         }
     });
 
-    // 3. Injecte dans les bonnes listes dynamiquement
-    document.getElementById(type + "-form-list").appendChild(formBlock);
-    document.getElementById(type + "-preview-list").appendChild(previewBlock);
-
-    initPreview(formBlock);
-}
-
-document.querySelectorAll(".btn-add").forEach(btn => {
-    btn.addEventListener("click", function (event) {
-        event.preventDefault();
-        const type = btn.dataset.type;
-        const templateID = btn.dataset.template;
-        const champs = btn.dataset.fields.split(',');
-        ajouterElement(type, champs, templateID);
-    })
-})
-const nomInput = document.getElementById("nom");
-const titreInput = document.getElementById("headline")
-const prenomInput = document.getElementById("prenom");
-const emailInput = document.getElementById("email");
-const telInput = document.getElementById("numero");
-
-//const selectAnnee = document.querySelectorAll("select[name=year]")
-/*selectAnnee.forEach(y => {
-    if (y) {
-        let optionsHTML = '<option value="">Année</option>';
-        const annee = new Date().getFullYear();
-
-        for (let i = annee; i >= 1980; i--) {
-            optionsHTML += `<option value="${i}">${i}</option>`;
-        }
-        y.innerHTML = optionsHTML;
+    // Gestion de la suppression
+    const btnRemove = clone.querySelector(".remove-" + type);
+    if (btnRemove) {
+        btnRemove.style.border = "5px solid red"; // Pour voir s'il est bien détecté
+        btnRemove.addEventListener("click", () => {
+            alert("Clic détecté sur la suppression de " + type);
+            formBlock.remove();
+            previewBlock.remove();
+        });
     }
-})*/
 
+    // Injection dans le DOM
+    const formList = document.getElementById(type + "-form-list");
+    const previewList = document.getElementById(type + "-preview-list");
 
-/*const allInputs = document.querySelectorAll('[data-target]');
-allInputs.forEach(input => {
-    input.addEventListener('input', function () {
-        if (input.dataset.target === "#p-full-name") {
-            return;
-        }
-        const target = document.querySelector(input.dataset.target);
-
-        if (target) {
-            target.textContent = input.value || target.getAttribute('data-default') || "";
-        }
-    })
-})
-
-const allTextareas = document.querySelectorAll('[data-target2]');
-allTextareas.forEach(textarea => {
-    textarea.addEventListener('input', () => {
-        const target = document.querySelector(textarea.dataset.target2);
-
-        if (target) {
-            target.textContent = textarea.value || target.getAttribute('data-default2') || "";
-        }
-    })
-})*/
-const previewFullName = document.getElementById('p-full-name');
-
-function updateFullName() {
-
-    const nom = nomInput.value.trim().toUpperCase();
-
-    let prenom = prenomInput.value.trim();
-    if (prenom) {
-        prenom = prenom.charAt(0).toUpperCase() + prenom.slice(1).toLowerCase();
-    }
-    if (!nom && !prenom) {
-        previewFullName.textContent = "Prénom NOM";
+    if (formList && previewList) {
+        formList.appendChild(formBlock);
+        previewList.appendChild(previewBlock);
+        // On active la preview sur le nouveau bloc
+        initPreview(formBlock);
     } else {
-        previewFullName.textContent = `${prenom} ${nom}`.trim();
+        console.error("Listes de réception introuvables pour :", type);
     }
 }
 
-nomInput.addEventListener('input', updateFullName);
-prenomInput.addEventListener('input', updateFullName);
-//-------------------Bloque Focus-----------------------------------
-
-
-//--------------Dark-mode---------------------------
-mode.addEventListener("click", function () {
-    if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
-        htmlElement.setAttribute('data-bs-theme', "light");
-        iconMode.className = "bi bi-sun";
-        mode.textContent = "Mode Clair"
-        mode.classList.replace('btn-outline-light', 'btn-outline-dark');
-
-    } else {
-        htmlElement.setAttribute('data-bs-theme', 'dark');
-        iconMode.className = "bi bi-moon";
-        mode.textContent = "Mode Sombre"
-        mode.classList.replace('btn-outline-dark', 'btn-outline-light');
-    }
-})
-
-function resetFormulaire() {
-    const formulaire = document.getElementById("my-form");
-    formulaire.reset();
-}
-
-
-
-/**
- * @param {HTMLElement|Document} conteneur
- */
+// 4. FONCTION PREVIEW (Mise à jour texte + focus)
 function initPreview(conteneur) {
-    // 1. AJOUT de "select" dans la liste des éléments surveillés
     const inputs = conteneur.querySelectorAll('input[data-target], textarea[data-target], select[data-target]');
-    previewFocus();
+
     inputs.forEach(input => {
-        // 2. On utilise 'change' pour les SELECT et 'input' pour le reste
-        const eventType = input.tagName === 'SELECT' ? 'change' : 'input';
+        const selector = input.dataset.target;
+        if (!selector) return;
 
-        input.addEventListener(eventType, () => {
-            const selector = input.dataset.target;
+        const updateFocus = () => {
             const cible = document.querySelector(selector);
-
             if (cible) {
-                if (input.tagName === 'SELECT') {
-                    const niveau = input.value;
-                    const pourcentage = getNiveauPercent(niveau);
+                document.querySelectorAll('.preview-focus').forEach(el => el.classList.remove('preview-focus'));
+                cible.classList.add("preview-focus");
+                cible.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        };
 
-                    cible.style.width = pourcentage + "%";
+        input.addEventListener('focus', updateFocus);
 
-
-                    cible.className = "progress-bar " + (pourcentage <= 50 ? "bg-danger" : "bg-success");
-
-
-                    cible.innerText = formatNiveau(niveau);
-                }
-                else {
-                    cible.innerText = input.value || cible.getAttribute('data-default') || "";
-
-                }
+        const eventType = input.tagName === 'SELECT' ? 'change' : 'input';
+        input.addEventListener(eventType, () => {
+            const cible = document.querySelector(selector);
+            if (cible) {
+                cible.innerText = input.value || cible.getAttribute('data-default') || "";
+                updateFocus();
             }
         });
     });
 }
 
-function formatNiveau(niveau) {
-    const niveaux = {
-        debutant: "Débutant",
-        intermediaire: "Intermédiaire",
-        avance: "Avancé",
-        expert: "Expert",
-    };
-    return niveaux[niveau] || ""
-}
-
-function getNiveauPercent(niveau) {
-    const percentages = {
-        debutant: 25,
-        intermediaire: 50,
-        avance: 75,
-        expert: 100,
-    };
-    return percentages[niveau] || 0;
-}
-
+// 5. FONCTION FOCUS GLOBAL
 function previewFocus() {
     const formulaire = document.getElementById("my-form");
-    formulaire.addEventListener("focusin", (event) => {
-        const elementClique = event.target;
-        elementClique.dataset.target;
-        if (!elementClique.dataset.target) {
-            return;
-        }
-        const cible = document.querySelector(elementClique.dataset.target)
-        cible.scrollIntoView({ behavior: "smooth", block: "center" })
-        // On retire la classe à tous les anciens éléments focus
-        document.querySelectorAll('.preview-focus').forEach(el => el.classList.remove('preview-focus'));
-        cible.classList.add("preview-focus");
+    if (!formulaire) return;
 
-    })
+    formulaire.addEventListener("focusin", (event) => {
+        const targetSelector = event.target.dataset.target;
+        if (!targetSelector) return;
+
+        setTimeout(() => {
+            const cible = document.querySelector(targetSelector);
+            if (cible) {
+                cible.scrollIntoView({ behavior: "smooth", block: "center" });
+                document.querySelectorAll('.preview-focus').forEach(el => el.classList.remove('preview-focus'));
+                cible.classList.add("preview-focus");
+            }
+        }, 0);
+    });
 }
 
+// 6. MODE SOMBRE & FULLNAME (Gardés tels quels)
+if (mode) {
+    mode.addEventListener("click", function () {
+        const isDark = htmlElement.getAttribute('data-bs-theme') === 'dark';
+        htmlElement.setAttribute('data-bs-theme', isDark ? "light" : "dark");
+        iconMode.className = isDark ? "bi bi-sun" : "bi bi-moon";
+        mode.textContent = isDark ? "Mode Clair" : "Mode Sombre";
+        mode.classList.toggle('btn-outline-light');
+        mode.classList.toggle('btn-outline-dark');
+    });
+}
 
-initPreview(document);
-resetFormulaire();
+const nomInput = document.getElementById("nom");
+const prenomInput = document.getElementById("prenom");
+const previewFullName = document.getElementById('p-full-name');
 
+function updateFullName() {
+    const nom = nomInput.value.trim().toUpperCase();
+    let prenom = prenomInput.value.trim();
+    if (prenom) prenom = prenom.charAt(0).toUpperCase() + prenom.slice(1).toLowerCase();
+
+    previewFullName.textContent = (!nom && !prenom) ? "Prénom NOM" : `${prenom} ${nom}`.trim();
+}
+
+if (nomInput && prenomInput) {
+    nomInput.addEventListener('input', updateFullName);
+    prenomInput.addEventListener('input', updateFullName);
+}
