@@ -23,3 +23,11 @@ textarea {
     transition: all 0.3s ease;
     transition: background-color 0.3s;
 }
+
+/* Style pour les champs verrouillés */
+.locked-style {
+    background-color: #f0f0f0 !important;
+    cursor: not-allowed;
+    border-color: #ccc !important;
+    color: black !important;
+}

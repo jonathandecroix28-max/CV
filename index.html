@@ -25,23 +25,24 @@
     <main class="container-fluid text-center">
         <div class="row px-md-5">
             <section class="col-lg-6">
-                <form action="cv.php" method="post" id="my-form">
+                <form action="export.php" method="post" id="my-form" target="_blank">
                     <div class="container mb-4 p-4 border border-3 border-primary rounded-4 shadow-sm bg-body-tertiary">
                         <h2>Information Générales</h2>
                         <hr class="w-50 border-3 mx-auto border-success">
                         <label class="form-label" for="nom">Nom*</label>
-                        <input class="form-control info-cv w-75 mb-3 mx-auto" id="nom" name="nom" type="text" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="nom" name="nom" type="text"
+                            required>
                         <label class="form-label" for="prenom">Prénom*</label>
-                        <input class="form-control info-cv w-75 mb-3 mx-auto" name="prenom" id="prenom" type="text"
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="prenom" id="prenom" type="text"
                             required>
                         <label class="form-label" for="headline">Titre Professionnel*</label>
-                        <input class="form-control info-cv w-75 mb-3 mx-auto" id="headline" data-target="#p-headline"
-                            name="headline" type="text" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="headline"
+                            data-target="#p-headline" name="headline" type="text" required>
                         <label class="form-label" for="email">Email*</label>
-                        <input class="form-control info-cv w-75 mb-3 mx-auto" name="email" data-target="#p-email"
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="email" data-target="#p-email"
                             id="email" type="email" required>
                         <label class="form-label" for="numero">Téléphone*</label>
-                        <input class="form-control info-cv w-75 mb-3 mx-auto" name="numero" data-target="#p-numero"
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="numero" data-target="#p-numero"
                             id="numero" autocomplete="off" type="tel" pattern="[0-9]{9}"
                             title="Veuillez entrer 9 chiffres après le code pays">
                         <label class="form-label" for="description">Description/Résumé professionnel</label>
@@ -50,52 +51,54 @@
                     </div>
                     <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="exp">
                         <h2>Expériences professionnelles</h2>
-                        <div id="exp-form-list"></div>
+
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-exp">
                             <label class="form-label" for="poste">Intitulé du poste*</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="text" data-target="#p-poste"
-                                name="poste" id="poste" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
+                                data-target="#p-poste" name="poste[]" id="poste" required>
                             <label class="form-label" for="entreprise">Nom de l'entreprise*</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="text"
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
                                 data-target="#p-entreprise" name="entreprise" id="entreprise" required>
                             <label class="form-label" for="date">Date de début*</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-debut"
-                                name="date" id="date" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
+                                data-target="#p-debut" name="date" id="date" required>
                             <label class="form-label" for="fin">Date de fin</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-fin"
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-fin"
                                 name="fin" id="fin">
                             <label class="form-label" for="description-mission">Description des missions</label>
                             <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-mission"
                                 id="description-mission" data-target="#p-desc-mission"></textarea>
                         </div>
+                        <div id="exp-form-list"></div>
                         <button data-type="exp" data-fields="poste,entreprise,missions,debut,fin"
-                            class="btn btn-success btn-add mb-2" data-template="temp-exp"
-                            data-source="#temp-exp">Ajouter une expérience</button>
+                            class="btn btn-success btn-add mb-2" data-template="temp-exp">Ajouter une
+                            expérience</button>
                     </div>
 
 
                     <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="form">
                         <h2>Formations</h2>
-                        <div id="formation-form-list"></div>
+
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-fomation">
                             <label class="form-label" for="formation">Intitulé du diplôme ou de la formation*</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="text" data-target="#p-diplome"
-                                name="formation" id="formation" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
+                                data-target="#p-diplome" name="formation" id="formation" required>
                             <label class="form-label" for="etablissement">Établissement*</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="text"
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
                                 data-target="#p-etablissement" name="etablissement" id="etablissement" required>
                             <label class="form-label" for="date">Date de début*</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-start"
-                                name="date" id="date" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
+                                data-target="#p-start" name="date" id="date" required>
                             <label class="form-label" for="fin">Date de fin</label>
-                            <input class="form-control info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-end"
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-end"
                                 name="fin" id="fin">
                             <label class="form-label" for="description-formation">Description</label>
                             <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-formation"
                                 id="formation" data-target="#p-form"></textarea>
                         </div>
+                        <div id="formation-form-list"></div>
                         <button data-type="formation" data-fields="diplome,etablissement,start,end,desc"
                             class="btn btn-add btn-success mb-2" data-template="temp-form">Ajouter une
                             formation</button>
@@ -107,7 +110,7 @@
                         <hr>
                         <div id="bloc-saisie-comp">
                             <label class="form-label" for="skills-input">Compétence*</label>
-                            <input class="form-control w-75 mb-3 mx-auto" type="text" id="skills-input"
+                            <input class="form-control lock w-75 mb-3 mx-auto" type="text" id="skills-input"
                                 placeholder="ex: JavaScript" data-target="#p-competence">
 
                             <div id="comp-form-list"></div>
@@ -119,8 +122,12 @@
                         </button>
 
                     </div>
-
+                    <div class="text-center mt-5 mb-5">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-file-earmark-pdf"></i> Exporter mon CV en PDF
+                        </button>
                 </form>
+
             </section>
 
             <section class="col-lg-6">
@@ -184,22 +191,26 @@
                         </div>
                     </div>
                 </div>
+
             </section>
+
+
+
+
         </div>
 
         <template id="temp-exp">
             <div class="exp-item mb-4 border p-3 rounded shadow-sm bg-dark">
                 <div class="container mb-4 p-2 w">
+                    <button type="button" class="remove-exp">X</button>
                     <h3 class="text-primary m-0">Nouvelle Expérience</h3>
                     <hr class="border-success w-50 mx-auto border-3">
-                    <button type="button" class="remove-exp">X</button>
-                </div>
 
+                </div>
                 <div>
                     <div>
                         <label class="form-label">Intitulé du poste*</label>
-                        <input type="text" class="form-control exp-poste w-75 mb-3 mx-auto"
-                            placeholder="ex: Développeur Web" required>
+                        <input type="text" class="form-control exp-poste w-75 mb-3 mx-auto" name="poste[]" required>
                     </div>
                     <div>
                         <label class="form-label">Nom de l'entreprise*</label>
@@ -234,6 +245,7 @@
 
         <template id="temp-form">
             <div class="formation-item mb-4 border p-3 rounded shadow-sm bg-dark">
+                <button type="button" class="remove-formation">X</button>
                 <div class="container mb-4 p-2 w">
                     <h3 class="text-primary m-0">Nouvelle Formation</h3>
                     <hr class="border-success w-50 mx-auto border-3">
@@ -260,7 +272,7 @@
                             placeholder="Détaillez vos missions..."></textarea>
                     </div>
                 </div>
-                <button type="button" class="remove-formation">X</button>
+
             </div>
 
 
@@ -282,10 +294,6 @@
                 <span class="p-competence"></span>
             </div>
         </template>
-
-
-
-
 
 
     </main>

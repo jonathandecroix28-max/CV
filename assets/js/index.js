@@ -28,15 +28,18 @@ window.addEventListener('DOMContentLoaded', () => {
     initPreview(document);
     previewFocus();
 
-    // Reset du formulaire au chargement
+
     const formulaire = document.getElementById("my-form");
     if (formulaire) formulaire.reset();
 });
 
-// 3. FONCTION D'AJOUT DYNAMIQUE (Template)
 function ajouterElement(type, champs, templateID) {
+
+    lockInput(type);
+
     compteur++;
     const template = document.getElementById(templateID);
+
     if (!template) return console.error("Template introuvable :", templateID);
 
     const clone = template.content.cloneNode(true);
@@ -45,22 +48,18 @@ function ajouterElement(type, champs, templateID) {
 
     if (!formBlock || !previewBlock) return console.error("Structure du template incorrecte pour :", type);
 
-    // Liaison des champs
     champs.forEach(element => {
         const cible = clone.querySelector(".p-" + element);
         const source = clone.querySelector("." + type + "-" + element);
-
         if (cible && source) {
             const uniqueId = "p-" + element + "-" + compteur;
             cible.id = uniqueId;
             source.dataset.target = "#" + uniqueId;
         }
     });
-
-    // Gestion de la suppression
     const btnRemove = clone.querySelector(".remove-" + type);
     if (btnRemove) {
-        btnRemove.style.border = "5px solid red"; // Pour voir s'il est bien détecté
+        btnRemove.style.border = "5px solid red";
         btnRemove.addEventListener("click", () => {
             alert("Clic détecté sur la suppression de " + type);
             formBlock.remove();
@@ -159,4 +158,22 @@ function updateFullName() {
 if (nomInput && prenomInput) {
     nomInput.addEventListener('input', updateFullName);
     prenomInput.addEventListener('input', updateFullName);
+}
+
+function lockInput(type) {
+    const anciensInputs = document.querySelectorAll(`.${type}-item input, .${type}-item textarea`);
+    anciensInputs.forEach(input => {
+        input.readOnly = true;
+        input.classList.add('locked-style');
+    });
+}
+
+function lockForm(parentSelector) {
+    const container = document.querySelector(parentSelector);
+    if (!container) return;
+    const inputForm = document.querySelectorAll(".lock");
+    inputForm.forEach(input => {
+        input.readOnly = true;
+        input.classList.add("locked-style");
+    })
 }
