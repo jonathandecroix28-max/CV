@@ -22,6 +22,9 @@
                         </tr>
                     </table>
                 </div>
+                <h1>
+                    <?php echo htmlspecialchars(($_POST['prenom'] ?? '') . ' ' . ($_POST['nom'] ?? '')); ?>
+                </h1>
                 <h2>Profil</h2>
                 <div class="sidebar-text"><?php echo nl2br(htmlspecialchars($_POST['description'] ?? '')); ?></div>
                 <h2>Contact</h2>
@@ -47,7 +50,7 @@
                 ?>
             </td>
             <td class="main">
-                <h1><?php echo htmlspecialchars(($_POST['prenom'] ?? '') . ' ' . ($_POST['nom'] ?? '')); ?></h1>
+
                 <div class="headline"><?php echo htmlspecialchars($_POST['headline'] ?? ''); ?></div>
 
                 <h2>Expériences Professionnelles</h2>
@@ -57,7 +60,8 @@
                             <div class="item-title"><?php echo htmlspecialchars($poste); ?></div>
                             <div class="item-meta">
                                 <?php echo htmlspecialchars($_POST['entreprise'][$idx] ?? ''); ?> |
-                                <?php echo htmlspecialchars($_POST['date'][$idx] ?? ''); ?>
+                                <?php echo htmlspecialchars($_POST['date'][$idx] ?? ''); ?> au
+                                <?php echo htmlspecialchars($_POST['fin'][$idx] ?? ''); ?>
                             </div>
                             <div class="item-desc-main">
                                 <?php echo nl2br(htmlspecialchars($_POST['description-mission'][$idx] ?? '')); ?>
@@ -71,7 +75,14 @@
                     <?php foreach ($_POST['formation'] as $idx => $f): ?>
                         <div class="item">
                             <div class="item-title"><?php echo htmlspecialchars($f); ?></div>
-                            <div class="item-meta"><?php echo htmlspecialchars($_POST['etablissement'][$idx] ?? ''); ?></div>
+                            <div class="item-meta"><?php echo htmlspecialchars($_POST['etablissement'][$idx] ?? ''); ?> |
+                                <?php echo htmlspecialchars($_POST['datef'][$idx] ?? ''); ?> au
+                                <?php echo htmlspecialchars($_POST['finf'][$idx] ?? ''); ?>
+                            </div>
+                            <div class="item-desc-main">
+                                <?php echo nl2br(htmlspecialchars($_POST['description-formation'][$idx] ?? '')); ?>
+                            </div>
+
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>

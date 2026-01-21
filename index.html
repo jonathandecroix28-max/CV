@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body>
+<body class="bg-warning bg-opacity-25">
     <header>
         <nav class="nav justify-content-center">
             <button class="btn btn-outline-light" id="mode">
@@ -32,25 +32,30 @@
                             <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
                         </div>
                     </div>
-                    <div class="container mb-4 p-4 border border-3 border-primary rounded-4 shadow-sm bg-body-tertiary">
+                    <div class="container mb-4 p-4 border border-3 border-primary rounded-4 shadow-sm bg-opacity-50">
                         <h2>Information Générales</h2>
                         <hr class="w-50 border-3 mx-auto border-success">
                         <label class="form-label fs-5" for="nom">Nom*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="nom" name="nom" type="text"
-                            required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                            id="nom" name="nom" type="text" required>
                         <label class="form-label fs-5" for="prenom">Prénom*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="prenom" id="prenom" type="text"
-                            required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                            name="prenom" id="prenom" type="text" required>
                         <label class="form-label fs-5" for="headline">Titre Professionnel*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="headline"
-                            data-target="#p-headline" name="headline" type="text" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                            id="headline" data-target="#p-headline" name="headline" type="text" required>
                         <label class="form-label fs-5" for="email">Email*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="email" data-target="#p-email"
-                            id="email" type="email" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                            name="email" data-target="#p-email" id="email" type="email" required>
                         <label class="form-label fs-5" for="numero">Téléphone*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="numero" data-target="#p-numero"
-                            id="numero" autocomplete="off" type="tel" pattern="[0-9]{9}"
-                            title="Veuillez entrer 9 chiffres après le fs-5 pays">
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                            name="numero" data-target="#p-numero" id="numero" autocomplete="off" type="tel"
+                            pattern="[0-9]{9}" title="Veuillez entrer 9 chiffres après le fs-5 pays">
                         <label class="form-label fs-5" for="description">Description/Résumé professionnel</label>
                         <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description" id="description"
                             data-target="#p-description"></textarea>
@@ -61,17 +66,21 @@
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-exp">
                             <label class="form-label fs-5" for="poste">Intitulé du poste*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-poste" name="poste[]" id="poste" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="text" data-target="#p-poste" name="poste[]" id="poste" required>
                             <label class="form-label fs-5" for="entreprise">Nom de l'entreprise*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-entreprise" name="entreprise[]" id="entreprise" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="text" data-target="#p-entreprise" name="entreprise[]" id="entreprise" required>
                             <label class="form-label fs-5" for="date">Date de début*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
-                                data-target="#p-debut" name="date[]" id="date" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="date" data-target="#p-debut" name="date[]" id="date" required>
                             <label class="form-label fs-5" for="fin">Date de fin</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-fin"
-                                name="fin[]" id="fin">
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="date" data-target="#p-fin" name="fin[]" id="fin">
                             <label class="form-label fs-5" for="description-mission">Description des
                                 missions</label>
                             <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-mission[]"
@@ -91,17 +100,22 @@
                         <div id="bloc-fomation">
                             <label class="form-label fs-5" for="formation">Intitulé du diplôme ou de la
                                 formation*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-diplome" name="formation[]" id="formation" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="text" data-target="#p-diplome" name="formation[]" id="formation" required>
                             <label class="form-label fs-5" for="etablissement">Établissement*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-etablissement" name="etablissement[]" id="etablissement" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="text" data-target="#p-etablissement" name="etablissement[]" id="etablissement"
+                                required>
                             <label class="form-label fs-5" for="date">Date de début*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
-                                data-target="#p-start" name="datef[]" id="date" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="date" data-target="#p-start" name="datef[]" id="date" required>
                             <label class="form-label fs-5" for="fin">Date de fin</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-end"
-                                name="finf[]" id="fin">
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
+                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
+                                type="date" data-target="#p-end" name="finf[]" id="fin">
                             <label class="form-label fs-5" for="description-formation">Description</label>
                             <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-formation[]"
                                 id="formation" data-target="#p-form"></textarea>
@@ -141,8 +155,8 @@
             <section class="col-lg-6">
                 <div class="sticky-preview">
                     <h4 class="text-muted text-center mb-3">Aperçu en temps réel</h4>
-                    <div class="bg-white text-dark shadow-lg rounded mx-auto w-100 overflow-hidden" id="previewea"
-                        style="min-height: 842px; max-width: 595px; padding: 0;">
+                    <div class="bg-white text-dark shadow-cv rounded-1 mx-auto w-100 overflow-hidden" id="previewea"
+                        style="min-height: 842px; max-width: 595px; border: 1px solid rgba(0,0,0,0.1);">
                         <div class="row g-0" style="min-height: 842px;">
                             <div class="col-5 bg-dark text-white p-4">
                                 <div class="text-center mb-4">
@@ -150,8 +164,8 @@
                                         style="width: 80px; height: 80px; font-size: 1.5rem; color: #0fbcf9;">
                                         JT
                                     </div>
-                                    <h5 id="p-full-name" class="fw-bold text-uppercase" style="white-space: nowrap;"
-                                        data-default="NOM Prénom">
+                                    <h5 id="p-full-name" class="fw-bold text-uppercase text-start"
+                                        style="white-space: nowrap;" data-default="NOM Prénom">
                                         NOM
                                         Prénom</h5>
                                     <h5 class="border-bottom border-2 d-inline-block pb-1 text-uppercase text-info">

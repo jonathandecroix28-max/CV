@@ -25,19 +25,19 @@
             font-size: 14px;
         }
 
-        /* LE SECRET : Un bloc de couleur fixe qui ne bouge pas */
+
         .sidebar-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 30%;
             height: 100%;
-            /* Dompdf comprend mieux 100% ici qu'avec bottom:0 */
+
             background-color: #1e272e !important;
-            /* Force la couleur */
+
         }
 
-        /* Le tableau devient transparent, il sert juste à aligner le texte */
+
         .wrapper {
             width: 100%;
             border-collapse: collapse;
@@ -69,24 +69,15 @@
             font-family: 'Helvetica', Arial, sans-serif;
         }
 
-
-
-        /* La sidebar est transparente pour laisser voir le fond du body */
-
-
-        /* Le contenu principal a un fond blanc qui couvre le noir du body */
-
-
-        /* --- STYLES DE CONTENU --- */
         .initials-circle {
             width: 90px;
             height: 90px;
             border: 2px solid #0fbcf9;
             border-radius: 45px;
-            /* Valeur fixe pour un cercle parfait */
+
             margin: 0 auto 25px auto;
             overflow: hidden;
-            /* Empêche le texte de déborder */
+
         }
 
         .initials-center-table {
@@ -108,7 +99,7 @@
             font-weight: bold;
             padding: 0;
             line-height: 1;
-            /* Évite les décalages de ligne */
+
         }
 
 
@@ -149,7 +140,7 @@
             font-size: 35px;
             margin: 0;
             text-transform: uppercase;
-            color: #1e272e;
+            color: #ffffff;
         }
 
         .headline {

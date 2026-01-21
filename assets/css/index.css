@@ -31,7 +31,7 @@ textarea {
     transition: background-color 0.3s;
 }
 
-/* Style pour les champs verrouillés */
+
 .locked-style {
     background-color: #f0f0f0 !important;
     cursor: not-allowed;
@@ -39,10 +39,10 @@ textarea {
     color: black !important;
 }
 
-/* Personnalise le bouton du input file */
+
 #photo::file-selector-button {
     content: "Parcourir";
-    /* Texte personnalisé */
+
     padding: 0.375rem 0.75rem;
     border-radius: 0.375rem;
     background-color: #0fbcf9;
@@ -52,10 +52,17 @@ textarea {
     cursor: pointer;
 }
 
-/* Cache ou modifie l'apparence du texte "No file chosen" */
+
 #photo {
     color: #636e72;
-    /* Couleur du texte "Aucun fichier choisi" */
+
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: inherit;
+    box-shadow: none;
+    /* Enlève le halo bleu par défaut si tu veux du relief pur */
 }
 
 @media (min-width: 992px) {

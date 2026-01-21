@@ -1,14 +1,14 @@
-// 1. DÉCLARATIONS DES VARIABLES GLOBALES (Nettoyées)
+
 const htmlElement = document.documentElement;
 const mode = document.getElementById("mode");
 const iconMode = document.getElementById("icon");
 let compteur = 0;
 
-// 2. INITIALISATION GÉNÉRALE (Le cerveau du script)
+
 window.addEventListener('DOMContentLoaded', () => {
     console.log("🚀 Système prêt !");
 
-    // Écouteurs pour les boutons "Ajouter"
+
     const boutonsAjout = document.querySelectorAll(".btn-add");
     console.log("Boutons .btn-add trouvés :", boutonsAjout.length);
 
@@ -81,7 +81,7 @@ function ajouterElement(type, champs, templateID) {
     }
 }
 
-// 4. FONCTION PREVIEW (Mise à jour texte + focus)
+// mise a jour de la preview + focus
 function initPreview(conteneur) {
     const inputs = conteneur.querySelectorAll('input[data-target], textarea[data-target], select[data-target]');
 
@@ -111,7 +111,7 @@ function initPreview(conteneur) {
     });
 }
 
-// 5. FONCTION FOCUS GLOBAL
+// permet le focus sur la preview
 function previewFocus() {
     const formulaire = document.getElementById("my-form");
     if (!formulaire) return;
@@ -131,7 +131,7 @@ function previewFocus() {
     });
 }
 
-// 6. MODE SOMBRE & FULLNAME (Gardés tels quels)
+
 if (mode) {
     mode.addEventListener("click", function () {
         const isDark = htmlElement.getAttribute('data-bs-theme') === 'dark';
@@ -152,7 +152,7 @@ function updateFullName() {
     let prenom = prenomInput.value.trim();
     if (prenom) prenom = prenom.charAt(0).toUpperCase() + prenom.slice(1).toLowerCase();
 
-    previewFullName.textContent = (!nom && !prenom) ? "Prénom NOM" : `${prenom} ${nom}`.trim();
+    previewFullName.textContent = (!nom && !prenom) ? "NOM Prénom" : `${prenom} ${nom}`.trim();
 }
 
 if (nomInput && prenomInput) {
