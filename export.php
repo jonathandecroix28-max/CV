@@ -3,24 +3,31 @@ require 'vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-// 1. Configuration des options
+$user = $_POST['nom'] . " " . $_POST['prenom'];
+$user_propre = trim($user);
+$user_final = preg_replace('/[^a-z0-9]/', '_', strtolower($user_propre));
+$pseudo_cv = preg_replace('/_+/', '_', $user_final);
+
 $options = new Options();
 $options->set('isRemoteEnabled', true);
-$options->set('defaultFont', 'Helvetica'); // Helvetica est souvent plus propre que Arial sur Dompdf
+$options->set('defaultFont', 'Helvetica');
+$options->set('isHtml5ParserEnabled', true);
 
-// 2. Initialisation UNIQUE de Dompdf avec les options
 $dompdf = new Dompdf($options);
 
-// 3. Récupération du contenu HTML
 ob_start();
 include 'cv.php';
 $html = ob_get_clean();
+$html = trim($html); // Supprime les espaces parasites
 
-// 4. Chargement et rendu
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
+// Nettoyage final du buffer pour éviter les pages blanches
+while (ob_get_level()) {
+    ob_end_clean();
+}
 
-// 5. Envoi au navigateur (le paramètre 'Attachment' => false permet d'ouvrir au lieu de télécharger)
-$dompdf->stream("mon_cv.pdf", ["Attachment" => false]);
-?>
+$dompdf->stream("le_cv_de_{$pseudo_cv}.pdf", ["Attachment" => false]);
+
+exit;

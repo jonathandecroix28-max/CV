@@ -177,3 +177,34 @@ function lockForm(parentSelector) {
         input.classList.add("locked-style");
     })
 }
+
+const photo = document.getElementById("photo");
+
+function updatePreviewPhoto() {
+    const file = inputs.photo.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            preview.photo.src = e.target.result;
+            preview.photo.style.display = "block";
+            preview.photoContainer.classList.remove("d-none");
+            btnRemovePhoto.classList.remove("d-none");
+        };
+        reader.readAsDataURL(file);
+    } else {
+        preview.photo.src = "";
+        preview.photo.style.display = "none";
+        preview.photoContainer.classList.add("d-none");
+        btnRemovePhoto.classList.add("d-none");
+    }
+}
+
+// met à jour la preview à chaque changement
+Object.values(inputs).forEach((input) => {
+    if (input) {
+        input.addEventListener("input", updatePreview);
+    }
+    if (inputs.photo) {
+        inputs.photo.addEventListener("change", updatePreviewPhoto);
+    }
+});

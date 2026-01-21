@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+
 textarea {
     resize: none !important;
 }
@@ -15,6 +20,8 @@ textarea {
     display: none;
 }
 
+
+
 .preview-focus {
     background-color: rgba(13, 110, 253, 0.1);
     outline: 2px dashed #0d6efd;
@@ -30,4 +37,30 @@ textarea {
     cursor: not-allowed;
     border-color: #ccc !important;
     color: black !important;
+}
+
+/* Personnalise le bouton du input file */
+#photo::file-selector-button {
+    content: "Parcourir";
+    /* Texte personnalisé */
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    background-color: #0fbcf9;
+    color: white;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Cache ou modifie l'apparence du texte "No file chosen" */
+#photo {
+    color: #636e72;
+    /* Couleur du texte "Aucun fichier choisi" */
+}
+
+@media (min-width: 992px) {
+    .sticky-preview {
+        position: sticky;
+        top: 20px;
+    }
 }

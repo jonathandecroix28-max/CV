@@ -1,0 +1,190 @@
+        @page {
+            margin: 0;
+            size: A4 portrait;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        table,
+        tr,
+        td {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #fff;
+            line-height: 1.15;
+            font-size: 14px;
+        }
+
+        /* LE SECRET : Un bloc de couleur fixe qui ne bouge pas */
+        .sidebar-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30%;
+            height: 100%;
+            /* Dompdf comprend mieux 100% ici qu'avec bottom:0 */
+            background-color: #1e272e !important;
+            /* Force la couleur */
+        }
+
+        /* Le tableau devient transparent, il sert juste à aligner le texte */
+        .wrapper {
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+        }
+
+        .sidebar {
+            width: 30%;
+            vertical-align: top;
+            padding: 40px 20px;
+            color: #ffffff;
+            background: #1e272e;
+            /* Fond transparent pour voir le .sidebar-bg */
+        }
+
+        .main {
+            width: 70%;
+            vertical-align: top;
+            padding: 40px 35px;
+            background: white;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: white;
+            font-family: 'Helvetica', Arial, sans-serif;
+        }
+
+
+
+        /* La sidebar est transparente pour laisser voir le fond du body */
+
+
+        /* Le contenu principal a un fond blanc qui couvre le noir du body */
+
+
+        /* --- STYLES DE CONTENU --- */
+        .initials-circle {
+            width: 90px;
+            height: 90px;
+            border: 2px solid #0fbcf9;
+            border-radius: 45px;
+            /* Valeur fixe pour un cercle parfait */
+            margin: 0 auto 25px auto;
+            overflow: hidden;
+            /* Empêche le texte de déborder */
+        }
+
+        .initials-center-table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .initials-center-table td {
+            text-align: center;
+            /* Centrage horizontal */
+            vertical-align: middle;
+            /* Centrage vertical */
+            color: #0fbcf9;
+            font-size: 32px;
+            font-weight: bold;
+            padding: 0;
+            line-height: 1;
+            /* Évite les décalages de ligne */
+        }
+
+
+        .sidebar h2 {
+            color: #0fbcf9;
+            border-bottom: 2px solid #3d4852;
+            font-size: 16px;
+            margin-top: 30px;
+            text-transform: uppercase;
+            padding-bottom: 6px;
+        }
+
+        .sidebar-text {
+            font-size: 12px;
+            text-align: justify;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .contact-item {
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .contact-item img {
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        .skill-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            border-left: 3px solid #0fbcf9;
+            padding-left: 10px;
+        }
+
+        h1 {
+            font-size: 35px;
+            margin: 0;
+            text-transform: uppercase;
+            color: #1e272e;
+        }
+
+        .headline {
+            font-size: 18px;
+            color: #0fbcf9;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .main h2 {
+            color: #1e272e;
+            border-bottom: 2px solid #0fbcf9;
+            font-size: 20px;
+            margin-top: 35px;
+            text-transform: uppercase;
+            padding-bottom: 6px;
+        }
+
+        .item {
+            margin-bottom: 20px;
+        }
+
+        .item-title {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .item-meta {
+            color: #0fbcf9;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .item-desc-main {
+            color: #636e72;
+            font-size: 13px;
+            line-height: 1.4;
+        }

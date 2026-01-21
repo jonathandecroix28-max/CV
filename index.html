@@ -26,26 +26,32 @@
         <div class="row px-md-5">
             <section class="col-lg-6">
                 <form action="export.php" method="post" id="my-form" target="_blank">
+                    <div class="mb-3 w-75 mx-auto text-start">
+                        <div class="input-group">
+                            <label class="input-group-text" for="photo">Parcourir...</label>
+                            <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                        </div>
+                    </div>
                     <div class="container mb-4 p-4 border border-3 border-primary rounded-4 shadow-sm bg-body-tertiary">
                         <h2>Information Générales</h2>
                         <hr class="w-50 border-3 mx-auto border-success">
-                        <label class="form-label" for="nom">Nom*</label>
+                        <label class="form-label fs-5" for="nom">Nom*</label>
                         <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="nom" name="nom" type="text"
                             required>
-                        <label class="form-label" for="prenom">Prénom*</label>
+                        <label class="form-label fs-5" for="prenom">Prénom*</label>
                         <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="prenom" id="prenom" type="text"
                             required>
-                        <label class="form-label" for="headline">Titre Professionnel*</label>
+                        <label class="form-label fs-5" for="headline">Titre Professionnel*</label>
                         <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="headline"
                             data-target="#p-headline" name="headline" type="text" required>
-                        <label class="form-label" for="email">Email*</label>
+                        <label class="form-label fs-5" for="email">Email*</label>
                         <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="email" data-target="#p-email"
                             id="email" type="email" required>
-                        <label class="form-label" for="numero">Téléphone*</label>
+                        <label class="form-label fs-5" for="numero">Téléphone*</label>
                         <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="numero" data-target="#p-numero"
                             id="numero" autocomplete="off" type="tel" pattern="[0-9]{9}"
-                            title="Veuillez entrer 9 chiffres après le code pays">
-                        <label class="form-label" for="description">Description/Résumé professionnel</label>
+                            title="Veuillez entrer 9 chiffres après le fs-5 pays">
+                        <label class="form-label fs-5" for="description">Description/Résumé professionnel</label>
                         <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description" id="description"
                             data-target="#p-description"></textarea>
                     </div>
@@ -54,20 +60,21 @@
 
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-exp">
-                            <label class="form-label" for="poste">Intitulé du poste*</label>
+                            <label class="form-label fs-5" for="poste">Intitulé du poste*</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
                                 data-target="#p-poste" name="poste[]" id="poste" required>
-                            <label class="form-label" for="entreprise">Nom de l'entreprise*</label>
+                            <label class="form-label fs-5" for="entreprise">Nom de l'entreprise*</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-entreprise" name="entreprise" id="entreprise" required>
-                            <label class="form-label" for="date">Date de début*</label>
+                                data-target="#p-entreprise" name="entreprise[]" id="entreprise" required>
+                            <label class="form-label fs-5" for="date">Date de début*</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
-                                data-target="#p-debut" name="date" id="date" required>
-                            <label class="form-label" for="fin">Date de fin</label>
+                                data-target="#p-debut" name="date[]" id="date" required>
+                            <label class="form-label fs-5" for="fin">Date de fin</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-fin"
-                                name="fin" id="fin">
-                            <label class="form-label" for="description-mission">Description des missions</label>
-                            <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-mission"
+                                name="fin[]" id="fin">
+                            <label class="form-label fs-5" for="description-mission">Description des
+                                missions</label>
+                            <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-mission[]"
                                 id="description-mission" data-target="#p-desc-mission"></textarea>
                         </div>
                         <div id="exp-form-list"></div>
@@ -82,20 +89,21 @@
 
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-fomation">
-                            <label class="form-label" for="formation">Intitulé du diplôme ou de la formation*</label>
+                            <label class="form-label fs-5" for="formation">Intitulé du diplôme ou de la
+                                formation*</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-diplome" name="formation" id="formation" required>
-                            <label class="form-label" for="etablissement">Établissement*</label>
+                                data-target="#p-diplome" name="formation[]" id="formation" required>
+                            <label class="form-label fs-5" for="etablissement">Établissement*</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
-                                data-target="#p-etablissement" name="etablissement" id="etablissement" required>
-                            <label class="form-label" for="date">Date de début*</label>
+                                data-target="#p-etablissement" name="etablissement[]" id="etablissement" required>
+                            <label class="form-label fs-5" for="date">Date de début*</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
-                                data-target="#p-start" name="date" id="date" required>
-                            <label class="form-label" for="fin">Date de fin</label>
+                                data-target="#p-start" name="datef[]" id="date" required>
+                            <label class="form-label fs-5" for="fin">Date de fin</label>
                             <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-end"
-                                name="fin" id="fin">
-                            <label class="form-label" for="description-formation">Description</label>
-                            <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-formation"
+                                name="finf[]" id="fin">
+                            <label class="form-label fs-5" for="description-formation">Description</label>
+                            <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-formation[]"
                                 id="formation" data-target="#p-form"></textarea>
                         </div>
                         <div id="formation-form-list"></div>
@@ -107,11 +115,11 @@
                     <div class="container mb-4 p-2 border border-3 border-primary rounded-4" id="section-competence">
                         <h2>Compétences</h2>
 
-                        <hr>
+                        <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-saisie-comp">
-                            <label class="form-label" for="skills-input">Compétence*</label>
-                            <input class="form-control lock w-75 mb-3 mx-auto" type="text" id="skills-input"
-                                placeholder="ex: JavaScript" data-target="#p-competence">
+                            <label class="form-label fs-5" for="skills-input">Compétences*</label>
+                            <input class="form-control lock w-75 mb-3 mx-auto" type="text" name="competence[]"
+                                id="skills-input" placeholder="ex: JavaScript" data-target="#p-competence">
 
                             <div id="comp-form-list"></div>
                         </div>
@@ -133,64 +141,87 @@
             <section class="col-lg-6">
                 <div class="sticky-preview">
                     <h4 class="text-muted text-center mb-3">Aperçu en temps réel</h4>
-                    <div class="bg-white text-dark p-5 shadow-lg rounded mx-auto w-100" id="previewea"
-                        style="min-height: 800px; max-width: 600px;">
-                        <div class="text-center mb-4 border border-3 border-success rounded-4 pb-3 bg-secondary">
-                            <div>
-                                <h1 id="p-full-name" class="fw-bold mb-1" data-default="NOM Prénom">
-                                    NOM Prénom</h1>
+                    <div class="bg-white text-dark shadow-lg rounded mx-auto w-100 overflow-hidden" id="previewea"
+                        style="min-height: 842px; max-width: 595px; padding: 0;">
+                        <div class="row g-0" style="min-height: 842px;">
+                            <div class="col-5 bg-dark text-white p-4">
+                                <div class="text-center mb-4">
+                                    <div class="rounded-circle border border-3 border-info d-flex align-items-center justify-content-center mx-auto mb-3"
+                                        style="width: 80px; height: 80px; font-size: 1.5rem; color: #0fbcf9;">
+                                        JT
+                                    </div>
+                                    <h5 id="p-full-name" class="fw-bold text-uppercase" style="white-space: nowrap;"
+                                        data-default="NOM Prénom">
+                                        NOM
+                                        Prénom</h5>
+                                    <h5 class="border-bottom border-2 d-inline-block pb-1 text-uppercase text-info">
+                                        Profil</h5>
+                                    <p id="p-description" data-default="Décrivez vôtre parcours en quelques mots"
+                                        style="white-space: pre-line;">Décrivez vôtre parcours en
+                                        quelques mots...
+                                    </p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="text-uppercase border-bottom border-2 pb-1 text-info">Contact</h6>
+                                    <div class="small">
+                                        <p class="mb-1"><i class="bi bi-envelope"></i> <span id="p-email"
+                                                data-default="email@exemple.com">email@exemple.com
+                                            </span>
+                                        </p>
+                                        <p class="mb-1"><i class="bi bi-telephone"></i> <span id="p-numero"
+                                                data-default="+33 XX XX XX XX">+33 XX XX XX XX
+                                            </span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-4 text-start">
+                                    <h6 class="text-uppercase border-bottom border-2 pb-1 mb-3 text-info">Compétences
+                                    </h6>
+                                    <div id="p-competence" class="small border-start border-3 border-info ps-2 mb-2"
+                                        style="min-height: 1.2em;">
+                                    </div>
+                                    <div id="comp-preview-list" class="small"></div>
+                                </div>
                             </div>
-                            <p id="p-headline" data-default="Titre du poste" class="h4 text-primary">Titre du poste</p>
-                            <div class="small text-black mt-2">
-                                <span id="p-email" data-default="email@exemple.com">email@exemple.com</span> |
-                                <span id="p-numero" data-default="+33 XX XX XX XX">+33 XX XX XX XX</span>
+                            <div class="col-7">
+                                <div class="mb-4">
+
+                                    <div class="small">
+                                        <p id="p-headline" class="small text-info" data-default="Titre du poste">Titre
+                                            du
+                                            poste</p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">EXPÉRIENCES</h5>
+                                    <p id="p-poste" data-default="Intitulé du poste">Intitulé du poste</p>
+                                    <p id="p-entreprise" data-default="Nom de l'entreprise">Nom de l'entreprise</p>
+                                    <p id="p-debut" data-default="Date de début">Date de début</p>
+                                    <p id="p-fin" data-default="Date de fin">Date de fin</p>
+                                    <p id="p-desc-mission" data-default="Description de la mission">Description de la
+                                        mission
+                                    </p>
+                                    <div id="exp-preview-list"></div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">
+                                        Formations/Diplômes</h5>
+                                    <p id="p-diplome" data-default="Intitulé du poste">Formation/diplome</p>
+                                    <p id="p-etablissement" data-default="Nom de l'entreprise">etablissement</p>
+                                    <p id="p-start" data-default="Date de début">Date de début</p>
+                                    <p id="p-end" data-default="Date de fin">Date de fin</p>
+                                    <p id="p-form" data-default="Description">Description</p>
+                                    <div id="formation-preview-list"></div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">PROFIL</h5>
-                            <div class="small">
-                                <p id="p-description" data-default="Décrivez vôtre parcours en quelques mots"
-                                    style="white-space: pre-line;">Décrivez vôtre parcours en
-                                    quelques mots...
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">EXPÉRIENCES</h5>
-                            <p id="p-poste" data-default="Intitulé du poste">Intitulé du poste</p>
-                            <p id="p-entreprise" data-default="Nom de l'entreprise">Nom de l'entreprise</p>
-                            <p id="p-debut" data-default="Date de début">Date de début</p>
-                            <p id="p-fin" data-default="Date de fin">Date de fin</p>
-                            <p id="p-desc-mission" data-default="Description de la mission">Description de la mission
-                            </p>
-                            <div id="exp-preview-list"></div>
-                        </div>
-
-                        <div class="mb-4">
-                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">
-                                Formations/Diplômes</h5>
-                            <p id="p-diplome" data-default="Intitulé du poste">Formation/diplome</p>
-                            <p id="p-etablissement" data-default="Nom de l'entreprise">etablissement</p>
-                            <p id="p-start" data-default="Date de début">Date de début</p>
-                            <p id="p-end" data-default="Date de fin">Date de fin</p>
-                            <p id="p-form" data-default="Description">Description</p>
-                            <div id="formation-preview-list"></div>
-                        </div>
-
-                        <div class="mb-4 border border-3 border-success rounded-4">
-                            <h5 class="border-bottom ber-success border-2 d-inline-block pb-1">
-                                Compétences</h5>
-                            <div id="p-competence"></div>
-                            <!--- <div class="progress mb-2" style="height: 8px"> -->
-                            <!---     <div id="p-progress" class="progress-bar bg-secondary" style="width: 0%"></div>-->
-
-                            <!-- </div>-->
-                            <div id="comp-preview-list" class="mt-2"></div>
                         </div>
                     </div>
-                </div>
+
 
             </section>
 
@@ -215,16 +246,16 @@
                     <div>
                         <label class="form-label">Nom de l'entreprise*</label>
                         <input type="text" class="form-control exp-entreprise w-75 mb-3 mx-auto"
-                            placeholder="ex: Google" required>
+                            placeholder="ex: Google" nom="entreprise[]" required>
                     </div>
-                    <label class="form-label" for="date">Date de début*</label>
-                    <input class="form-control info-cv w-75 mb-3 mx-auto exp-debut" type="date" name="date" required>
-                    <label class="form-label" for="fin">Date de fin</label>
-                    <input class="form-control info-cv w-75 mb-3 mx-auto exp-fin" type="date" name="fin">
+                    <label class="form-label fs-5" for="date">Date de début*</label>
+                    <input class="form-control info-cv w-75 mb-3 mx-auto exp-debut" type="date" name="date[]" required>
+                    <label class="form-label fs-5" for="fin">Date de fin</label>
+                    <input class="form-control info-cv w-75 mb-3 mx-auto exp-fin" type="date" name="fin[]">
                     <div>
                         <label class="form-label">Description des missions</label>
                         <textarea class="form-control exp-missions w-75 mb-3 mx-auto" rows="5"
-                            placeholder="Détaillez vos missions..."></textarea>
+                            placeholder="Détaillez vos missions..." name="description-mission[]"></textarea>
                     </div>
                 </div>
             </div>
@@ -253,23 +284,24 @@
                 <div>
                     <div>
                         <label class="form-label">Intitulé du diplôme/formation*</label>
-                        <input type="text" name="f_diplo" class="form-control formation-diplome w-75 mb-3 mx-auto"
+                        <input type="text" name="formation[]" class="form-control formation-diplome w-75 mb-3 mx-auto"
                             placeholder="ex: Formation" required>
                     </div>
                     <div>
-                        <label class="form-label">Nom de l'entreprise*</label>
-                        <input type="text" name="f_" class="form-control formation-etablissement w-75 mb-3 mx-auto"
-                            placeholder="ex: Google" required>
+                        <label class="form-label">Établissement*</label>
+                        <input type="text" name="etablissement[]"
+                            class="form-control formation-etablissement w-75 mb-3 mx-auto" placeholder="ex: Google"
+                            required>
                     </div>
-                    <label class="form-label" for="date">Date de début*</label>
-                    <input class="form-control info-cv w-75 mb-3 mx-auto formation-start" type="date" name="date"
+                    <label class="form-label fs-5" for="date">Date de début*</label>
+                    <input class="form-control info-cv w-75 mb-3 mx-auto formation-start" type="date" name="datef[]"
                         required>
-                    <label class="form-label" for="fin">Date de fin</label>
-                    <input class="form-control info-cv w-75 mb-3 mx-auto formation-end" type="date" name="fin">
+                    <label class="form-label fs-5" for="fin">Date de fin</label>
+                    <input class="form-control info-cv w-75 mb-3 mx-auto formation-end" type="date" name="finf[]">
                     <div>
                         <label class="form-label">Description des missions</label>
                         <textarea class="form-control formation-desc w-75 mb-3 mx-auto" rows="5"
-                            placeholder="Détaillez vos missions..."></textarea>
+                            placeholder="Détaillez vos missions..." name="description-formation[]"></textarea>
                     </div>
                 </div>
 
@@ -288,10 +320,10 @@
         <template id="temp-comp">
             <div class="comp-item">
                 <button type="button" class="remove-comp">X</button>
-                <input class="comp-competence">
+                <input class="comp-competence" name="competence[]">
             </div>
             <div class="preview-comp-item">
-                <span class="p-competence"></span>
+                <span class="p-competence border-start border-3 border-info ps-2 mb-2"></span>
             </div>
         </template>
 
