@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
-<body class="bg-warning bg-opacity-25">
+<body class="bg-light bg-white bg-opacity-25">
     <header>
         <nav class="nav justify-content-center">
             <button class="btn btn-outline-light" id="mode">
@@ -22,65 +22,63 @@
             </button>
         </nav>
     </header>
-    <main class="container-fluid text-center">
+    <main
+        class="container-fluid text-center border border-2 border-white border-opacity-50 w-75 rounded-4 shadow-sm bg-opacity-25">
         <div class="row px-md-5">
             <section class="col-lg-6">
                 <form action="export.php" method="post" id="my-form" target="_blank">
                     <div class="mb-3 w-75 mx-auto text-start">
+                        <label class="form-label fw-bold">Photo de profil</label>
                         <div class="input-group">
-                            <label class="input-group-text" for="photo">Parcourir...</label>
-                            <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                            <input type="file" class="form-control bg-dark text-white border-secondary" name="photo"
+                                id="photo" accept="image/*">
+                            <input type="hidden" name="photo_base64" id="photo_base64">
                         </div>
+                        <button type="button" id="btn-remove-photo" class="btn btn-sm btn-outline-danger mt-2 d-none">
+                            <i class="bi bi-trash"></i> Supprimer la photo
+                        </button>
                     </div>
-                    <div class="container mb-4 p-4 border border-3 border-primary rounded-4 shadow-sm bg-opacity-50">
+                    <div
+                        class="container mb-4 p-4 border border-2 border-white border-opacity-50 rounded-4 shadow-sm bg-opacity-50">
                         <h2>Information Générales</h2>
                         <hr class="w-50 border-3 mx-auto border-success">
                         <label class="form-label fs-5" for="nom">Nom*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                            id="nom" name="nom" type="text" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="nom" name="nom" type="text"
+                            required>
                         <label class="form-label fs-5" for="prenom">Prénom*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                            name="prenom" id="prenom" type="text" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="prenom" id="prenom" type="text"
+                            required>
                         <label class="form-label fs-5" for="headline">Titre Professionnel*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                            id="headline" data-target="#p-headline" name="headline" type="text" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" id="headline"
+                            data-target="#p-headline" name="headline" type="text" required>
                         <label class="form-label fs-5" for="email">Email*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                            name="email" data-target="#p-email" id="email" type="email" required>
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="email" data-target="#p-email"
+                            id="email" type="email" required>
                         <label class="form-label fs-5" for="numero">Téléphone*</label>
-                        <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                            style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                            name="numero" data-target="#p-numero" id="numero" autocomplete="off" type="tel"
-                            pattern="[0-9]{9}" title="Veuillez entrer 9 chiffres après le fs-5 pays">
+                        <input class="form-control lock info-cv w-75 mb-3 mx-auto" name="numero" data-target="#p-numero"
+                            id="numero" autocomplete="off" type="tel" pattern="[0-9]{9}"
+                            title="Veuillez entrer 9 chiffres après le fs-5 pays">
                         <label class="form-label fs-5" for="description">Description/Résumé professionnel</label>
                         <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description" id="description"
                             data-target="#p-description"></textarea>
                     </div>
-                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="exp">
+                    <div class="container mb-4 p-2 border border-2 border-white border-opacity-50 rounded-4 w" id="exp">
                         <h2>Expériences professionnelles</h2>
 
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-exp">
                             <label class="form-label fs-5" for="poste">Intitulé du poste*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="text" data-target="#p-poste" name="poste[]" id="poste" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
+                                data-target="#p-poste" name="poste[]" id="poste" required>
                             <label class="form-label fs-5" for="entreprise">Nom de l'entreprise*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="text" data-target="#p-entreprise" name="entreprise[]" id="entreprise" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
+                                data-target="#p-entreprise" name="entreprise[]" id="entreprise" required>
                             <label class="form-label fs-5" for="date">Date de début*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="date" data-target="#p-debut" name="date[]" id="date" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
+                                data-target="#p-debut" name="date[]" id="date" required>
                             <label class="form-label fs-5" for="fin">Date de fin</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="date" data-target="#p-fin" name="fin[]" id="fin">
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-fin"
+                                name="fin[]" id="fin">
                             <label class="form-label fs-5" for="description-mission">Description des
                                 missions</label>
                             <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-mission[]"
@@ -93,29 +91,25 @@
                     </div>
 
 
-                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4 w" id="form">
+                    <div class="container mb-4 p-2 border border-2 border-white border-opacity-50 rounded-4 w"
+                        id="form">
                         <h2>Formations</h2>
 
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-fomation">
                             <label class="form-label fs-5" for="formation">Intitulé du diplôme ou de la
                                 formation*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="text" data-target="#p-diplome" name="formation[]" id="formation" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
+                                data-target="#p-diplome" name="formation[]" id="formation" required>
                             <label class="form-label fs-5" for="etablissement">Établissement*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="text" data-target="#p-etablissement" name="etablissement[]" id="etablissement"
-                                required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="text"
+                                data-target="#p-etablissement" name="etablissement[]" id="etablissement" required>
                             <label class="form-label fs-5" for="date">Date de début*</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="date" data-target="#p-start" name="datef[]" id="date" required>
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date"
+                                data-target="#p-start" name="datef[]" id="date" required>
                             <label class="form-label fs-5" for="fin">Date de fin</label>
-                            <input class="form-control lock info-cv w-75 mb-3 mx-auto"
-                                style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white;"
-                                type="date" data-target="#p-end" name="finf[]" id="fin">
+                            <input class="form-control lock info-cv w-75 mb-3 mx-auto" type="date" data-target="#p-end"
+                                name="finf[]" id="fin">
                             <label class="form-label fs-5" for="description-formation">Description</label>
                             <textarea rows="5" class="form-control mb-3 w-75 mx-auto" name="description-formation[]"
                                 id="formation" data-target="#p-form"></textarea>
@@ -126,14 +120,15 @@
                             formation</button>
                     </div>
 
-                    <div class="container mb-4 p-2 border border-3 border-primary rounded-4" id="section-competence">
+                    <div class="container mb-4 p-2 border border-2 border-white border-opacity-50 rounded-4"
+                        id="section-competence">
                         <h2>Compétences</h2>
 
                         <hr class="w-50 border-3 mx-auto border-success">
                         <div id="bloc-saisie-comp">
                             <label class="form-label fs-5" for="skills-input">Compétences*</label>
                             <input class="form-control lock w-75 mb-3 mx-auto" type="text" name="competence[]"
-                                id="skills-input" placeholder="ex: JavaScript" data-target="#p-competence">
+                                id="skills-input" data-target="#p-competence">
 
                             <div id="comp-form-list"></div>
                         </div>
@@ -160,9 +155,17 @@
                         <div class="row g-0" style="min-height: 842px;">
                             <div class="col-5 bg-dark text-white p-4">
                                 <div class="text-center mb-4">
-                                    <div class="rounded-circle border border-3 border-info d-flex align-items-center justify-content-center mx-auto mb-3"
-                                        style="width: 80px; height: 80px; font-size: 1.5rem; color: #0fbcf9;">
-                                        JT
+                                    <div id="p-photo-wrapper" style="position: relative; display: inline-block;">
+
+                                        <div id="p-initials"
+                                            class="rounded-circle border border-3 border-info d-flex align-items-center justify-content-center mx-auto mb-3"
+                                            style="width: 100px; height: 100px; font-size: 2rem; color: #0fbcf9; background-color: rgba(15, 188, 249, 0.1);">
+                                            CV
+                                        </div>
+
+                                        <img id="p-photo" src="" alt="Photo"
+                                            class="rounded-circle border border-3 border-info mx-auto mb-3 d-none"
+                                            style="width: 100px; height: 100px; object-fit: cover;">
                                     </div>
                                     <h5 id="p-full-name" class="fw-bold text-uppercase text-start"
                                         style="white-space: nowrap;" data-default="NOM Prénom">
@@ -179,8 +182,8 @@
                                 <div class="mb-4">
                                     <h6 class="text-uppercase border-bottom border-2 pb-1 text-info">Contact</h6>
                                     <div class="small">
-                                        <p class="mb-1"><i class="bi bi-envelope"></i> <span id="p-email"
-                                                data-default="email@exemple.com">email@exemple.com
+                                        <p class="mb-1" style="white-space: nowrap;"><i class="bi bi-envelope"></i>
+                                            <span id="p-email" data-default="email@exemple.com">email@exemple.com
                                             </span>
                                         </p>
                                         <p class="mb-1"><i class="bi bi-telephone"></i> <span id="p-numero"
@@ -245,7 +248,8 @@
         </div>
 
         <template id="temp-exp">
-            <div class="exp-item mb-4 border p-3 rounded shadow-sm bg-dark">
+            <div
+                class="exp-item mb-4 shadow-sm container mb-4 p-4 border border-2 border-white border-opacity-50 rounded-4">
                 <div class="container mb-4 p-2 w">
                     <button type="button" class="remove-exp">X</button>
                     <h3 class="text-primary m-0">Nouvelle Expérience</h3>
@@ -254,20 +258,20 @@
                 </div>
                 <div>
                     <div>
-                        <label class="form-label">Intitulé du poste*</label>
+                        <label class="form-label fs-5">Intitulé du poste*</label>
                         <input type="text" class="form-control exp-poste w-75 mb-3 mx-auto" name="poste[]" required>
                     </div>
                     <div>
-                        <label class="form-label">Nom de l'entreprise*</label>
+                        <label class="form-label fs-5">Nom de l'entreprise*</label>
                         <input type="text" class="form-control exp-entreprise w-75 mb-3 mx-auto"
-                            placeholder="ex: Google" nom="entreprise[]" required>
+                            placeholder="ex: Google" name="entreprise[]" required>
                     </div>
                     <label class="form-label fs-5" for="date">Date de début*</label>
                     <input class="form-control info-cv w-75 mb-3 mx-auto exp-debut" type="date" name="date[]" required>
                     <label class="form-label fs-5" for="fin">Date de fin</label>
                     <input class="form-control info-cv w-75 mb-3 mx-auto exp-fin" type="date" name="fin[]">
                     <div>
-                        <label class="form-label">Description des missions</label>
+                        <label class="form-label fs-5">Description des missions</label>
                         <textarea class="form-control exp-missions w-75 mb-3 mx-auto" rows="5"
                             placeholder="Détaillez vos missions..." name="description-mission[]"></textarea>
                     </div>
@@ -289,7 +293,8 @@
         </template>
 
         <template id="temp-form">
-            <div class="formation-item mb-4 border p-3 rounded shadow-sm bg-dark">
+            <div
+                class="formation-item mb-4 container mb-4 p-4 border border-2 border-white border-opacity-50 rounded-4">
                 <button type="button" class="remove-formation">X</button>
                 <div class="container mb-4 p-2 w">
                     <h3 class="text-primary m-0">Nouvelle Formation</h3>
@@ -297,12 +302,12 @@
                 </div>
                 <div>
                     <div>
-                        <label class="form-label">Intitulé du diplôme/formation*</label>
+                        <label class="form-label fs-5">Intitulé du diplôme/formation*</label>
                         <input type="text" name="formation[]" class="form-control formation-diplome w-75 mb-3 mx-auto"
                             placeholder="ex: Formation" required>
                     </div>
                     <div>
-                        <label class="form-label">Établissement*</label>
+                        <label class="form-label fs-5">Établissement*</label>
                         <input type="text" name="etablissement[]"
                             class="form-control formation-etablissement w-75 mb-3 mx-auto" placeholder="ex: Google"
                             required>
@@ -313,7 +318,7 @@
                     <label class="form-label fs-5" for="fin">Date de fin</label>
                     <input class="form-control info-cv w-75 mb-3 mx-auto formation-end" type="date" name="finf[]">
                     <div>
-                        <label class="form-label">Description des missions</label>
+                        <label class="form-label fs-5">Description</label>
                         <textarea class="form-control formation-desc w-75 mb-3 mx-auto" rows="5"
                             placeholder="Détaillez vos missions..." name="description-formation[]"></textarea>
                     </div>
@@ -334,7 +339,7 @@
         <template id="temp-comp">
             <div class="comp-item">
                 <button type="button" class="remove-comp">X</button>
-                <input class="comp-competence" name="competence[]">
+                <input class="comp-competence w-75 mb-3 mx-auto" name="competence[]">
             </div>
             <div class="preview-comp-item">
                 <span class="p-competence border-start border-3 border-info ps-2 mb-2"></span>

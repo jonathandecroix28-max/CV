@@ -12,8 +12,13 @@ $options = new Options();
 $options->set('isRemoteEnabled', true);
 $options->set('defaultFont', 'Helvetica');
 $options->set('isHtml5ParserEnabled', true);
+$options->set('chroot', __DIR__);
 
 $dompdf = new Dompdf($options);
+
+$photo_base64 = $_POST['photo_base64'] ?? '';
+
+
 
 ob_start();
 include 'cv.php';

@@ -17,7 +17,17 @@
                     <table class="initials-center-table">
                         <tr>
                             <td>
-                                <?php echo strtoupper(substr($_POST['prenom'] ?? 'J', 0, 1) . substr($_POST['nom'] ?? 'T', 0, 1)); ?>
+                                <div class="photo-container" style="text-align: center; margin-bottom: 20px;">
+                                    <?php if (!empty($photo_base64)): ?>
+                                        <img src="<?php echo $photo_base64; ?>"
+                                            style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #0fbcf9;">
+                                    <?php else: ?>
+                                        <div
+                                            style="width: 100px; height: 100px; border-radius: 50%; background: #1e272e; color: #0fbcf9; text-align: center; line-height: 100px; font-size: 30px; margin: 0 auto;">
+                                            <?php echo strtoupper(substr($prenom, 0, 1) . substr($nom, 0, 1)); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                             </td>
                         </tr>
                     </table>

@@ -178,33 +178,77 @@ function lockForm(parentSelector) {
     })
 }
 
-const photo = document.getElementById("photo");
 
-function updatePreviewPhoto() {
-    const file = inputs.photo.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            preview.photo.src = e.target.result;
-            preview.photo.style.display = "block";
-            preview.photoContainer.classList.remove("d-none");
-            btnRemovePhoto.classList.remove("d-none");
-        };
-        reader.readAsDataURL(file);
-    } else {
-        preview.photo.src = "";
-        preview.photo.style.display = "none";
-        preview.photoContainer.classList.add("d-none");
-        btnRemovePhoto.classList.add("d-none");
-    }
+const previewPhoto = document.getElementById("p-photo");
+const initialsCircle = document.getElementById("p-initials");
+const btnRemovePhoto = document.getElementById("btn-remove-photo");
+
+const photoInput = document.getElementById("photo");
+const photoBase64 = document.getElementById("photo_base64");
+
+
+if (photoInput) {
+    photoInput.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+            // C'est ici qu'on définit reader !
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = new Image();
+
+                img.onload = function () {
+                    console.log("Image chargée, début de la compression...");
+
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    const size = 400;
+                    canvas.width = size;
+                    canvas.height = size;
+
+                    const scale = Math.max(size / img.width, size / img.height);
+                    const x = (size / 2) - (img.width / 2) * scale;
+                    const y = (size / 2) - (img.height / 2) * scale;
+
+                    ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+
+                    const compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+
+                    // Mise à jour de la preview et du champ PHP
+                    const pPhoto = document.getElementById("p-photo");
+                    const pInitials = document.getElementById("p-initials");
+                    const hiddenInput = document.getElementById("photo_base64");
+                    const btnRemove = document.getElementById("btn-remove-photo");
+
+                    if (pPhoto) {
+                        pPhoto.src = compressedBase64;
+                        pPhoto.classList.remove("d-none");
+                    }
+                    if (pInitials) pInitials.classList.add("d-none");
+                    if (hiddenInput) hiddenInput.value = compressedBase64;
+                    if (btnRemove) btnRemove.classList.remove("d-none");
+
+                    console.log("Succès ! Taille :", compressedBase64.length);
+                };
+
+                img.src = e.target.result;
+            };
+
+            // On lance la lecture du fichier
+            reader.readAsDataURL(file);
+        }
+    });
 }
 
-// met à jour la preview à chaque changement
-Object.values(inputs).forEach((input) => {
-    if (input) {
-        input.addEventListener("input", updatePreview);
-    }
-    if (inputs.photo) {
-        inputs.photo.addEventListener("change", updatePreviewPhoto);
-    }
-});
+// Gestion de la suppression
+if (btnRemovePhoto) {
+    btnRemovePhoto.addEventListener("click", () => {
+        photoInput.value = "";
+        previewPhoto.src = "";
+        previewPhoto.classList.add("d-none");
+        initialsCircle.classList.remove("d-none");
+        btnRemovePhoto.classList.add("d-none");
+    });
+}
