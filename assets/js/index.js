@@ -296,23 +296,28 @@ themeRadios.forEach(radio => {
     radio.addEventListener("change", function () {
         const selectedTheme = this.value;
 
-        // Enregistrer le thème choisi
+        // ✅ METTRE À JOUR L'INPUT CACHÉ
         cvThemeInput.value = selectedTheme;
+        console.log("📤 Thème envoyé au formulaire :", selectedTheme);
 
         // Appliquer le thème à la preview
         applyTheme(selectedTheme);
-
-        console.log("🎨 Thème changé en :", selectedTheme);
     });
 });
 
 function applyTheme(theme) {
+    if (!previewea) return;
+
     // Retirer tous les thèmes
     previewea.classList.remove('theme-dark', 'theme-blue', 'theme-modern');
 
     // Ajouter le thème sélectionné
     previewea.classList.add(`theme-${theme}`);
+
+    console.log("🎨 Thème appliqué à la preview :", theme);
 }
 
 // Initialiser avec le thème par défaut
-applyTheme('dark');
+if (previewea) {
+    applyTheme('dark');
+}

@@ -24,6 +24,8 @@ if (!in_array($theme, $validThemes)) {
     $theme = 'dark';
 }
 
+error_log("Thème reçu : " . $theme);
+
 ob_start();
 
 include "cv-{$theme}.php";
