@@ -271,81 +271,79 @@
                             <i class="bi bi-eye"></i> Aperçu en temps réel
                         </h2>
                     </div>
-                    <div class="card-body p-0" style="overflow: hidden; height: calc(100vh - 130px);">
-                        <div class="w-100 h-100 bg-white" id="previewea" style="display: flex;">
-                            <!-- Sidebar, la premiere colonne -->
-                            <div class="flex-shrink-0 p-2"
-                                style="width: 32%; background-color: #1e272e; color: white; overflow-y: auto; font-size: 0.8rem;">
-                                <div class="text-center mb-2">
-                                    <div id="p-initials"
-                                        class="rounded-circle border border-2 border-info d-flex align-items-center justify-content-center mx-auto mb-2"
-                                        style="width: 60px; height: 60px; font-size: 1.1rem; color: #0fbcf9; background-color: rgba(15, 188, 249, 0.1);">
-                                        CV
-                                    </div>
-                                    <img id="p-photo" src="" alt="Photo"
-                                        class="rounded-circle border border-2 border-info mx-auto mb-2 d-none"
-                                        style="width: 60px; height: 60px; object-fit: cover;">
-                                </div>
-                                <h4 id="p-full-name" class="fw-bold text-uppercase text-center mb-2"
-                                    data-default="NOM Prénom">
-                                    NOM Prénom
-                                </h4>
-                                <hr class="my-2" style="border-color: #3d4852;">
-                                <h3 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Profil</h3>
-                                <p id="p-description" class="small" data-default="Description"
-                                    style="white-space: pre-line; font-size: 0.75rem;">Description</p>
-                                <hr class="my-2" style="border-color: #3d4852;">
-                                <h3 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Contact</h3>
-                                <p class="small mb-1" style="font-size: 0.75rem;">📧 <span id="p-email"
-                                        data-default="email@exemple.com">email@exemple.com</span></p>
-                                <p class="small mb-2" style="font-size: 0.75rem;">📞 <span id="p-numero"
-                                        data-default="+33">+33</span></p>
-                                <hr class="my-2" style="border-color: #3d4852;">
-                                <h3 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Compétences</h3>
-                                <div id="p-competence" class="small" style="font-size: 0.75rem;"
-                                    data-default="Compétence"></div>
-                                <div id="comp-preview-list" class="small" style="font-size: 0.75rem;"></div>
-                                <h6 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2 mt-2"
-                                    style="font-size: 0.8rem;">LOISIRS</h6>
-                                <p id="p-loisir" class="small text-secondary" data-default="Loisir"
-                                    style="font-size: 0.7rem;">Loisir</p>
-                                <div id="loisirs-preview-list" class="small" style="font-size: 0.7rem;"></div>
-
-                                <!-- La deuxieme colonne contenu principale -->
-                                <div class="flex-grow-1 p-2" style="background-color: white; overflow-y: auto;">
-                                    <p id="p-headline" class="small text-info mb-2" data-default="Titre du poste"
-                                        style="font-size: 0.8rem;">Titre du poste</p>
-
-                                    <h3 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2"
-                                        style="font-size: 0.8rem;">EXPÉRIENCES</h3>
-                                    <p id="p-poste" class="small fw-bold mb-0" data-default="Poste"
-                                        style="font-size: 0.75rem;">Poste</p>
-                                    <p id="p-entreprise" class="small text-info mb-0" data-default="Entreprise"
-                                        style="font-size: 0.7rem;">Entreprise</p>
-                                    <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-debut"
-                                            data-default="Début">Début</span> - <span id="p-fin"
-                                            data-default="Fin">Fin</span></p>
-                                    <p id="p-desc-mission" class="small text-secondary" data-default="Description"
-                                        style="font-size: 0.7rem;">Description</p>
-                                    <div id="exp-preview-list" class="small" style="font-size: 0.7rem;"></div>
-
-                                    <h3 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2 mt-2"
-                                        style="font-size: 0.8rem;">FORMATION</h3>
-                                    <p id="p-diplome" class="small fw-bold mb-0" data-default="Diplôme"
-                                        style="font-size: 0.75rem;">Diplôme</p>
-                                    <p id="p-etablissement" class="small text-info mb-0" data-default="Établissement"
-                                        style="font-size: 0.7rem;">Établissement</p>
-                                    <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-start"
-                                            data-default="Début">Début</span> - <span id="p-end"
-                                            data-default="Fin">Fin</span></p>
-                                    <p id="p-form" class="small text-secondary" data-default="Description"
-                                        style="font-size: 0.7rem;">Description</p>
-                                    <div id="formation-preview-list" class="small" style="font-size: 0.7rem;"></div>
-                                </div>
+                    <!-- Dans la PREVIEW, section Sidebar, après les Compétences : -->
+                    <!-- Sidebar Preview -->
+                    <div class="flex-shrink-0 p-2"
+                        style="width: 32%; background-color: #1e272e; color: white; overflow-y: auto; font-size: 0.8rem;">
+                        <div class="text-center mb-2">
+                            <div id="p-initials"
+                                class="rounded-circle border border-2 border-info d-flex align-items-center justify-content-center mx-auto mb-2"
+                                style="width: 60px; height: 60px; font-size: 1.1rem; color: #0fbcf9; background-color: rgba(15, 188, 249, 0.1);">
+                                CV
                             </div>
+                            <img id="p-photo" src="" alt="Photo"
+                                class="rounded-circle border border-2 border-info mx-auto mb-2 d-none"
+                                style="width: 60px; height: 60px; object-fit: cover;">
                         </div>
+                        <h6 id="p-full-name" class="fw-bold text-uppercase text-center mb-2" data-default="NOM Prénom">
+                            NOM Prénom
+                        </h6>
+                        <hr class="my-2" style="border-color: #3d4852;">
+                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Profil</h6>
+                        <p id="p-description" class="small" data-default="Description"
+                            style="white-space: pre-line; font-size: 0.75rem;">Description</p>
+                        <hr class="my-2" style="border-color: #3d4852;">
+                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Contact</h6>
+                        <p class="small mb-1" style="font-size: 0.75rem;">📧 <span id="p-email"
+                                data-default="email@exemple.com">email@exemple.com</span></p>
+                        <p class="small mb-2" style="font-size: 0.75rem;">📞 <span id="p-numero"
+                                data-default="+33">+33</span></p>
+                        <hr class="my-2" style="border-color: #3d4852;">
+                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Compétences</h6>
+                        <div id="p-competence" class="small" style="font-size: 0.75rem;" data-default="Compétence">
+                        </div>
+                        <div id="comp-preview-list" class="small" style="font-size: 0.75rem;"></div>
+                        <hr class="my-2" style="border-color: #3d4852;">
+                        <!-- ✅ LOISIRS DANS LA SIDEBAR -->
+                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Loisirs</h6>
+                        <p id="p-loisir" class="small" data-default="Loisir" style="font-size: 0.75rem;">Loisir</p>
+                        <div id="loisirs-preview-list" class="small" style="font-size: 0.75rem;"></div>
                     </div>
-            </section>
+
+
+                    <!-- La deuxieme colonne contenu principale -->
+                    <div class="flex-grow-1 p-2" style="background-color: white; overflow-y: auto;">
+                        <p id="p-headline" class="small text-info mb-2" data-default="Titre du poste"
+                            style="font-size: 0.8rem;">Titre du poste</p>
+
+                        <h3 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2"
+                            style="font-size: 0.8rem;">EXPÉRIENCES</h3>
+                        <p id="p-poste" class="small fw-bold mb-0" data-default="Poste" style="font-size: 0.75rem;">
+                            Poste</p>
+                        <p id="p-entreprise" class="small text-info mb-0" data-default="Entreprise"
+                            style="font-size: 0.7rem;">Entreprise</p>
+                        <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-debut"
+                                data-default="Début">Début</span> - <span id="p-fin" data-default="Fin">Fin</span></p>
+                        <p id="p-desc-mission" class="small text-secondary" data-default="Description"
+                            style="font-size: 0.7rem;">Description</p>
+                        <div id="exp-preview-list" class="small" style="font-size: 0.7rem;"></div>
+
+                        <h3 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2 mt-2"
+                            style="font-size: 0.8rem;">FORMATION</h3>
+                        <p id="p-diplome" class="small fw-bold mb-0" data-default="Diplôme" style="font-size: 0.75rem;">
+                            Diplôme</p>
+                        <p id="p-etablissement" class="small text-info mb-0" data-default="Établissement"
+                            style="font-size: 0.7rem;">Établissement</p>
+                        <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-start"
+                                data-default="Début">Début</span> - <span id="p-end" data-default="Fin">Fin</span></p>
+                        <p id="p-form" class="small text-secondary" data-default="Description"
+                            style="font-size: 0.7rem;">Description</p>
+                        <div id="formation-preview-list" class="small" style="font-size: 0.7rem;"></div>
+                    </div>
+                </div>
+        </div>
+        </div>
+        </section>
         </div>
     </main>
 
