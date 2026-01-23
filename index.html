@@ -237,22 +237,19 @@
                             </div>
 
                             <div class="mb-3 p-2 border border-secondary rounded" id="section-loisirs">
-                                <h3 class="text-info mb-2">
+                                <h6 class="text-info mb-2">
                                     <i class="bi bi-heart"></i> Loisirs
-                                </h3>
-                                <div class="row g-2">
-                                    <div class="col-12">
-                                        <label class="form-label form-label-sm">Loisirs</label>
-                                        <input class="form-control form-control-sm" type="text" name="loisirs[]"
-                                            id="loisirs" data-target="#p-loisirs"
-                                            placeholder="ex: Lecture, Voyage, Sport...">
-                                        <div id="loisir-form-list"></div>
-                                    </div>
-                                    <button type="button" class="btn btn-sm btn-success btn-add mt-2" data-type="loisir"
-                                        data-fields="loisir" data-template="temp-loisir">
-                                        <i class="bi bi-plus"></i> Ajouter un loisir
-                                    </button>
+                                </h6>
+                                <div id="bloc-saisie-loisirs">
+                                    <label class="form-label form-label-sm">Loisirs*</label>
+                                    <input class="form-control form-control-sm lock" type="text" name="loisir[]"
+                                        id="skills-loisirs" data-target="#p-loisir">
+                                    <div id="loisirs-form-list"></div>
                                 </div>
+                                <button type="button" class="btn btn-sm btn-success btn-add mt-2" data-type="loisir"
+                                    data-template="temp-loisir" data-fields="loisir">
+                                    <i class="bi bi-plus"></i> Ajouter un loisir
+                                </button>
                             </div>
 
                             <!-- Bouton Export -->
@@ -308,11 +305,11 @@
                                 <div id="p-competence" class="small" style="font-size: 0.75rem;"
                                     data-default="Compétence"></div>
                                 <div id="comp-preview-list" class="small" style="font-size: 0.75rem;"></div>
-                                <h3 class="text-info text-uppercase mb-2 mt-3" style="font-size: 0.75rem;">Loisirs</h3>
-                                <p id="p-loisirs" class="small" data-default="Loisirs" style="font-size: 0.75rem;">
-                                    Loisirs</p>
-                                <div id="loisir-preview-list" class="small" style="font-size: 0.75rem;">
-                                </div>
+                                <h6 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2 mt-2"
+                                    style="font-size: 0.8rem;">LOISIRS</h6>
+                                <p id="p-loisir" class="small text-secondary" data-default="Loisir"
+                                    style="font-size: 0.7rem;">Loisir</p>
+                                <div id="loisirs-preview-list" class="small" style="font-size: 0.7rem;"></div>
 
                                 <!-- La deuxieme colonne contenu principale -->
                                 <div class="flex-grow-1 p-2" style="background-color: white; overflow-y: auto;">
@@ -457,9 +454,9 @@
     </template>
 
     <template id="temp-loisir">
-        <div class="loisir-item mb-2 mt-3 border-secondary rounded p-2">
+        <div class="loisir-item mb-2">
             <div class="input-group input-group-sm">
-                <input class="form-control form-control-sm loisir-loisir" name="loisirs[]" placeholder="Loisir">
+                <input class="form-control form-control-sm loisir-loisir" name="loisir[]" placeholder="Loisir">
                 <button type="button" class="remove-loisir btn btn-sm btn-danger">✕</button>
             </div>
             <div class="preview-loisir-item">
