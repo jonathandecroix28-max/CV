@@ -18,21 +18,31 @@ $dompdf = new Dompdf($options);
 
 $photo_base64 = $_POST['photo_base64'] ?? '';
 
-
+$theme = $_POST['cv_theme'] ?? 'dark';
+$validThemes = ['dark', 'blue', 'modern'];
+if (!in_array($theme, $validThemes)) {
+    $theme = 'dark';
+}
 
 ob_start();
-include 'cv.php';
+
+include "cv-{$theme}.php";
 $html = ob_get_clean();
-$html = trim($html); // Supprime les espaces parasites
+$html = trim($html);
 
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
-// Nettoyage final du buffer pour éviter les pages blanches
+
+$canvas = $dompdf->getCanvas();
+$font = $dompdf->getFontMetrics()->getFont('Helvetica', 'normal');
+$fontSize = 10;
+//$canvas->page_text(520, 820, "Page {PAGE_NUM} sur {PAGE_COUNT}", $font, $fontSize, [0, 0, 0]);
+
 while (ob_get_level()) {
     ob_end_clean();
 }
 
-$dompdf->stream("le_cv_de_{$pseudo_cv}.pdf", ["Attachment" => false]);
+$dompdf->stream("le_cv_de_{$pseudo_cv}.pdf", ["Attachment" => true]);
 
 exit;

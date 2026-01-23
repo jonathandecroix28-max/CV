@@ -1,0 +1,37 @@
+/* ✅ THÈME BLEU MODERNE */
+.theme-blue {
+    background-color: white;
+}
+
+.theme-blue .d-flex>div:first-child {
+    background: linear-gradient(135deg, #003d82 0%, #0066cc 100%) !important;
+    color: white !important;
+}
+
+.theme-blue .d-flex>div:last-child {
+    background-color: #f0f4f8 !important;
+    color: #1a1a1a !important;
+}
+
+.theme-blue h6 {
+    color: #0066cc !important;
+    font-weight: 600 !important;
+}
+
+.theme-blue .text-info {
+    color: #0066cc !important;
+}
+
+.theme-blue .text-uppercase {
+    color: #0066cc !important;
+}
+
+.theme-blue hr {
+    border-color: #0066cc !important;
+    opacity: 0.3;
+}
+
+.theme-blue .rounded-circle {
+    border-color: #0066cc !important;
+    background-color: rgba(0, 102, 204, 0.1) !important;
+}

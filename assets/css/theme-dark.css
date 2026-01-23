@@ -1,0 +1,30 @@
+/* ✅ THÈME SOMBRE (par défaut) */
+.theme-dark {
+    background-color: white;
+}
+
+.theme-dark .d-flex>div:first-child {
+    background-color: #1e272e !important;
+    color: white !important;
+}
+
+.theme-dark .d-flex>div:last-child {
+    background-color: white !important;
+    color: #333 !important;
+}
+
+.theme-dark h6 {
+    color: #0fbcf9 !important;
+}
+
+.theme-dark .text-info {
+    color: #0fbcf9 !important;
+}
+
+.theme-dark .text-uppercase {
+    color: #0fbcf9 !important;
+}
+
+.theme-dark hr {
+    border-color: #3d4852 !important;
+}

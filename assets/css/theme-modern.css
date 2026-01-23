@@ -1,0 +1,44 @@
+/* ✅ THÈME MODERNE MINIMALISTE */
+.theme-modern {
+    background-color: white;
+}
+
+.theme-modern .d-flex>div:first-child {
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%) !important;
+    color: white !important;
+    border-right: 4px solid #e74c3c;
+}
+
+.theme-modern .d-flex>div:last-child {
+    background-color: #ecf0f1 !important;
+    color: #2c3e50 !important;
+}
+
+.theme-modern h6 {
+    color: #e74c3c !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+}
+
+.theme-modern .text-info {
+    color: #e74c3c !important;
+}
+
+.theme-modern .text-uppercase {
+    color: #e74c3c !important;
+}
+
+.theme-modern hr {
+    border-color: #e74c3c !important;
+    border-width: 2px;
+}
+
+.theme-modern .rounded-circle {
+    border-color: #e74c3c !important;
+    background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+.theme-modern .small {
+    letter-spacing: 0.3px;
+}

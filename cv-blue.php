@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <style>
         <?php echo file_get_contents("assets/css/cv.css"); ?>
+        <?php echo file_get_contents("assets/css/theme-blue.css"); ?>
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +37,9 @@
                 </div>
 
                 <!-- Nom -->
-                <h1><?php echo htmlspecialchars(($_POST['prenom'] ?? '') . ' ' . ($_POST['nom'] ?? '')); ?></h1>
+                <h1>
+                    <?php echo htmlspecialchars(($_POST['prenom'] ?? '') . ' ' . ($_POST['nom'] ?? '')); ?>
+                </h1>
 
                 <!-- Profil -->
                 <h2>Profil</h2>

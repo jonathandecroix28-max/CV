@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <style>
         <?php echo file_get_contents("assets/css/cv.css"); ?>
+        <?php echo file_get_contents("assets/css/theme-modern.css"); ?>
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
