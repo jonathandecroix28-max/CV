@@ -32,14 +32,12 @@
 
             <div class="collapse navbar-collapse" id="navbarContent">
                 <div class="navbar-nav ms-auto d-flex gap-1 gap-md-2 flex-wrap justify-content-end">
-                    <!-- un bouton dark/light mode -->
                     <button class="btn btn-outline-light btn-sm" id="mode"
                         style="font-size: 0.8rem; padding: 0.25rem 0.5rem;">
                         <i class="bi bi-moon" id="icon"></i>
                         <span id="mode-text" class="d-none d-lg-inline ms-1">Mode</span>
                     </button>
 
-                    <!-- bouton pour selectionner le theme -->
                     <div class="btn-group btn-group-sm" role="group">
                         <input type="radio" class="btn-check" name="cv-theme" id="theme-dark" value="dark" checked>
                         <label class="btn btn-outline-light" for="theme-dark" title="Thème Sombre"
@@ -64,10 +62,10 @@
         </nav>
     </header>
 
-    <!-- main -->
+    <!-- MAIN -->
     <main class="container-fluid flex-grow-1 py-2">
         <div class="row g-2 h-100">
-            <!-- formulaire-->
+            <!-- FORMULAIRE -->
             <section class="col-12 col-lg-6 px-1">
                 <div class="card bg-dark border-secondary h-100 shadow-sm">
                     <div class="card-header bg-darker border-secondary p-2">
@@ -236,15 +234,16 @@
                                 </button>
                             </div>
 
+                            <!-- ✅ LOISIRS - Corrigé -->
                             <div class="mb-3 p-2 border border-secondary rounded" id="section-loisirs">
-                                <h6 class="text-info mb-2">
+                                <h3 class="text-info mb-2">
                                     <i class="bi bi-heart"></i> Loisirs
-                                </h6>
+                                </h3>
                                 <div id="bloc-saisie-loisirs">
-                                    <label class="form-label form-label-sm">Loisirs*</label>
+                                    <label class="form-label form-label-sm">Loisirs</label>
                                     <input class="form-control form-control-sm lock" type="text" name="loisir[]"
-                                        id="skills-loisirs" data-target="#p-loisir">
-                                    <div id="loisirs-form-list"></div>
+                                        id="loisir" data-target="#p-loisir" placeholder="ex: Lecture, Voyage, Sport...">
+                                    <div id="loisir-form-list"></div>
                                 </div>
                                 <button type="button" class="btn btn-sm btn-success btn-add mt-2" data-type="loisir"
                                     data-template="temp-loisir" data-fields="loisir">
@@ -263,91 +262,95 @@
                 </div>
             </section>
 
-            <!-- la preview -->
+            <!-- PREVIEW -->
             <section class="col-12 col-lg-6 px-1">
-                <div class="card  h-100 shadow-sm">
+                <div class="card h-100 shadow-sm">
                     <div class="card-header p-2">
                         <h2 class="m-0 h2 text-muted text-center">
                             <i class="bi bi-eye"></i> Aperçu en temps réel
                         </h2>
                     </div>
-                    <!-- Dans la PREVIEW, section Sidebar, après les Compétences : -->
-                    <!-- Sidebar Preview -->
-                    <div class="flex-shrink-0 p-2"
-                        style="width: 32%; background-color: #1e272e; color: white; overflow-y: auto; font-size: 0.8rem;">
-                        <div class="text-center mb-2">
-                            <div id="p-initials"
-                                class="rounded-circle border border-2 border-info d-flex align-items-center justify-content-center mx-auto mb-2"
-                                style="width: 60px; height: 60px; font-size: 1.1rem; color: #0fbcf9; background-color: rgba(15, 188, 249, 0.1);">
-                                CV
+                    <div class="card-body p-0" style="overflow: hidden; height: calc(100vh - 130px);">
+                        <div class="w-100 h-100 bg-white" id="previewea" style="display: flex;">
+                            <!-- SIDEBAR -->
+                            <div class="flex-shrink-0 p-2"
+                                style="width: 32%; background-color: #1e272e; color: white; overflow-y: auto; font-size: 0.8rem;">
+                                <div class="text-center mb-2">
+                                    <div id="p-initials"
+                                        class="rounded-circle border border-2 border-info d-flex align-items-center justify-content-center mx-auto mb-2"
+                                        style="width: 60px; height: 60px; font-size: 1.1rem; color: #0fbcf9; background-color: rgba(15, 188, 249, 0.1);">
+                                        CV
+                                    </div>
+                                    <img id="p-photo" src="" alt="Photo"
+                                        class="rounded-circle border border-2 border-info mx-auto mb-2 d-none"
+                                        style="width: 60px; height: 60px; object-fit: cover;">
+                                </div>
+                                <h4 id="p-full-name" class="fw-bold text-uppercase text-center mb-2"
+                                    data-default="NOM Prénom">
+                                    NOM Prénom
+                                </h4>
+                                <hr class="my-2" style="border-color: #3d4852;">
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Profil</h5>
+                                <p id="p-description" class="small" data-default="Description"
+                                    style="white-space: pre-line; font-size: 0.75rem;">Description</p>
+                                <hr class="my-2" style="border-color: #3d4852;">
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Contact</h5>
+                                <p class="small mb-1" style="font-size: 0.75rem;">📧 <span id="p-email"
+                                        data-default="email@exemple.com">email@exemple.com</span></p>
+                                <p class="small mb-2" style="font-size: 0.75rem;">📞 <span id="p-numero"
+                                        data-default="+33">+33</span></p>
+                                <hr class="my-2" style="border-color: #3d4852;">
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Compétences</h5>
+                                <div id="p-competence" class="small" style="font-size: 0.75rem;"
+                                    data-default="Compétence"></div>
+                                <div id="comp-preview-list" class="small" style="font-size: 0.75rem;"></div>
+                                <hr class="my-2" style="border-color: #3d4852;">
+                                <!-- ✅ LOISIRS DANS SIDEBAR -->
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Loisirs</h5>
+                                <p id="p-loisir" class="small" data-default="Loisir" style="font-size: 0.75rem;">Loisir
+                                </p>
+                                <div id="loisir-preview-list" class="small" style="font-size: 0.75rem;"></div>
                             </div>
-                            <img id="p-photo" src="" alt="Photo"
-                                class="rounded-circle border border-2 border-info mx-auto mb-2 d-none"
-                                style="width: 60px; height: 60px; object-fit: cover;">
+
+                            <!-- MAIN CONTENT -->
+                            <div class="flex-grow-1 p-2" style="background-color: white; overflow-y: auto;">
+                                <p id="p-headline" class="small text-info mb-2" data-default="Titre du poste"
+                                    style="font-size: 0.8rem;">Titre du poste</p>
+
+                                <h5 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2"
+                                    style="font-size: 0.8rem;">EXPÉRIENCES</h5>
+                                <p id="p-poste" class="small fw-bold mb-0" data-default="Poste"
+                                    style="font-size: 0.75rem;">Poste</p>
+                                <p id="p-entreprise" class="small text-info mb-0" data-default="Entreprise"
+                                    style="font-size: 0.7rem;">Entreprise</p>
+                                <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-debut"
+                                        data-default="Début">Début</span> - <span id="p-fin"
+                                        data-default="Fin">Fin</span></p>
+                                <p id="p-desc-mission" class="small text-secondary" data-default="Description"
+                                    style="font-size: 0.7rem;">Description</p>
+                                <div id="exp-preview-list" class="small" style="font-size: 0.7rem;"></div>
+
+                                <h5 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2 mt-2"
+                                    style="font-size: 0.8rem;">FORMATION</h5>
+                                <p id="p-diplome" class="small fw-bold mb-0" data-default="Diplôme"
+                                    style="font-size: 0.75rem;">Diplôme</p>
+                                <p id="p-etablissement" class="small text-info mb-0" data-default="Établissement"
+                                    style="font-size: 0.7rem;">Établissement</p>
+                                <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-start"
+                                        data-default="Début">Début</span> - <span id="p-end"
+                                        data-default="Fin">Fin</span></p>
+                                <p id="p-form" class="small text-secondary" data-default="Description"
+                                    style="font-size: 0.7rem;">Description</p>
+                                <div id="formation-preview-list" class="small" style="font-size: 0.7rem;"></div>
+                            </div>
                         </div>
-                        <h6 id="p-full-name" class="fw-bold text-uppercase text-center mb-2" data-default="NOM Prénom">
-                            NOM Prénom
-                        </h6>
-                        <hr class="my-2" style="border-color: #3d4852;">
-                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Profil</h6>
-                        <p id="p-description" class="small" data-default="Description"
-                            style="white-space: pre-line; font-size: 0.75rem;">Description</p>
-                        <hr class="my-2" style="border-color: #3d4852;">
-                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Contact</h6>
-                        <p class="small mb-1" style="font-size: 0.75rem;">📧 <span id="p-email"
-                                data-default="email@exemple.com">email@exemple.com</span></p>
-                        <p class="small mb-2" style="font-size: 0.75rem;">📞 <span id="p-numero"
-                                data-default="+33">+33</span></p>
-                        <hr class="my-2" style="border-color: #3d4852;">
-                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Compétences</h6>
-                        <div id="p-competence" class="small" style="font-size: 0.75rem;" data-default="Compétence">
-                        </div>
-                        <div id="comp-preview-list" class="small" style="font-size: 0.75rem;"></div>
-                        <hr class="my-2" style="border-color: #3d4852;">
-                        <!-- ✅ LOISIRS DANS LA SIDEBAR -->
-                        <h6 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Loisirs</h6>
-                        <p id="p-loisir" class="small" data-default="Loisir" style="font-size: 0.75rem;">Loisir</p>
-                        <div id="loisirs-preview-list" class="small" style="font-size: 0.75rem;"></div>
-                    </div>
-
-
-                    <!-- La deuxieme colonne contenu principale -->
-                    <div class="flex-grow-1 p-2" style="background-color: white; overflow-y: auto;">
-                        <p id="p-headline" class="small text-info mb-2" data-default="Titre du poste"
-                            style="font-size: 0.8rem;">Titre du poste</p>
-
-                        <h3 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2"
-                            style="font-size: 0.8rem;">EXPÉRIENCES</h3>
-                        <p id="p-poste" class="small fw-bold mb-0" data-default="Poste" style="font-size: 0.75rem;">
-                            Poste</p>
-                        <p id="p-entreprise" class="small text-info mb-0" data-default="Entreprise"
-                            style="font-size: 0.7rem;">Entreprise</p>
-                        <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-debut"
-                                data-default="Début">Début</span> - <span id="p-fin" data-default="Fin">Fin</span></p>
-                        <p id="p-desc-mission" class="small text-secondary" data-default="Description"
-                            style="font-size: 0.7rem;">Description</p>
-                        <div id="exp-preview-list" class="small" style="font-size: 0.7rem;"></div>
-
-                        <h3 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2 mt-2"
-                            style="font-size: 0.8rem;">FORMATION</h3>
-                        <p id="p-diplome" class="small fw-bold mb-0" data-default="Diplôme" style="font-size: 0.75rem;">
-                            Diplôme</p>
-                        <p id="p-etablissement" class="small text-info mb-0" data-default="Établissement"
-                            style="font-size: 0.7rem;">Établissement</p>
-                        <p class="small mb-2" style="font-size: 0.7rem;"><span id="p-start"
-                                data-default="Début">Début</span> - <span id="p-end" data-default="Fin">Fin</span></p>
-                        <p id="p-form" class="small text-secondary" data-default="Description"
-                            style="font-size: 0.7rem;">Description</p>
-                        <div id="formation-preview-list" class="small" style="font-size: 0.7rem;"></div>
                     </div>
                 </div>
-        </div>
-        </div>
-        </section>
+            </section>
         </div>
     </main>
 
-    <!-- footer -->
+    <!-- FOOTER -->
     <footer class="bg-dark border-top border-secondary py-2 mt-auto">
         <div class="container-fluid">
             <p class="small text-muted text-center mb-0">
@@ -356,11 +359,11 @@
         </div>
     </footer>
 
-    <!-- les templates-->
+    <!-- TEMPLATES -->
     <template id="temp-exp">
         <div class="exp-item mb-2 p-2 mt-3 border border-secondary rounded">
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="text-primary m-0 small">Nouvelle Expérience</h3>
+                <h6 class="text-primary m-0 small">Nouvelle Expérience</h6>
                 <button type="button" class="remove-exp btn btn-sm btn-danger">✕</button>
             </div>
             <div>
@@ -400,14 +403,14 @@
     <template id="temp-form">
         <div class="formation-item mb-2 p-2 mt-3 border border-secondary rounded">
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="text-primary m-0 small">Nouvelle Formation</h3>
+                <h6 class="text-primary m-0 small">Nouvelle Formation</h6>
                 <button type="button" class="remove-formation btn btn-sm btn-danger">✕</button>
             </div>
             <div>
                 <div class="mb-2">
                     <label class="form-label form-label-sm">Intitulé du diplôme*</label>
                     <input type="text" name="formation[]" class="form-control form-control-sm formation-diplome"
-                        placeholder="ex:  Licence" required>
+                        placeholder="ex: Licence" required>
                 </div>
                 <div class="mb-2">
                     <label class="form-label form-label-sm">Établissement*</label>
@@ -436,6 +439,7 @@
                 <p class="small mb-2"><span class="p-start">Début</span> - <span class="p-end">Fin</span></p>
                 <p class="p-desc small">Description</p>
             </div>
+        </div>
     </template>
 
     <template id="temp-comp">
@@ -451,8 +455,9 @@
         </div>
     </template>
 
+    <!-- ✅ TEMPLATE LOISIR - Corrigé -->
     <template id="temp-loisir">
-        <div class="loisir-item mb-2">
+        <div class="loisir-item mb-2 mt-3 border-secondary rounded p-2">
             <div class="input-group input-group-sm">
                 <input class="form-control form-control-sm loisir-loisir" name="loisir[]" placeholder="Loisir">
                 <button type="button" class="remove-loisir btn btn-sm btn-danger">✕</button>
