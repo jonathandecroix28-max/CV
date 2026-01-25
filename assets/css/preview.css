@@ -1,0 +1,214 @@
+/* ✅ SYNCHRONISER PREVIEW AVEC PDF */
+
+#previewea {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.15;
+}
+
+/* SIDEBAR */
+#previewea .flex-shrink-0 {
+    background-color: #1e272e !important;
+    color: white !important;
+    font-size: 11px;
+}
+
+/* Photo circulaire */
+#previewea #p-initials,
+#previewea #p-photo {
+    width: 80px;
+    height: 80px;
+}
+
+#previewea #p-initials {
+    font-size: 28px;
+    color: #0fbcf9;
+}
+
+/* Nom */
+#previewea #p-full-name {
+    font-size: 22px;
+    text-transform: uppercase;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* Titres sidebar (Profil, Contact, etc) */
+#previewea .flex-shrink-0 h5 {
+    color: #0fbcf9 !important;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #3d4852;
+    padding-bottom: 5px;
+}
+
+/* Contenu sidebar */
+#previewea .flex-shrink-0 p {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+#previewea .flex-shrink-0 .small {
+    font-size: 11px;
+}
+
+/* HR */
+#previewea hr {
+    border-color: #3d4852 !important;
+    margin: 10px 0;
+}
+
+/* EMAIL/TEL */
+#previewea .flex-shrink-0 p {
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+/* Compétences et Loisirs items */
+#previewea .flex-shrink-0 .skill-item,
+#previewea .flex-shrink-0 .loisir-item {
+    font-size: 11px;
+    border-left: 3px solid #0fbcf9;
+    padding-left: 8px;
+    margin-bottom: 6px;
+}
+
+/* MAIN CONTENT */
+#previewea .flex-grow-1 {
+    background-color: white !important;
+    color: #333 !important;
+    font-size: 11px;
+}
+
+/* Headline */
+#previewea #p-headline {
+    font-size: 14px;
+    color: #0fbcf9;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Titres sections (EXPÉRIENCES, FORMATION, etc) */
+#previewea .flex-grow-1 h5 {
+    color: #1e272e !important;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #0fbcf9 !important;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    padding-bottom: 5px;
+}
+
+/* Titre d'item (Poste, Diplôme) */
+#previewea #p-poste,
+#previewea #p-diplome {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+/* Meta info (Entreprise, dates) */
+#previewea #p-entreprise,
+#previewea #p-etablissement {
+    color: #0fbcf9;
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+
+/* Dates */
+#previewea .flex-grow-1 p {
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* Description */
+#previewea #p-desc-mission,
+#previewea #p-form {
+    color: #636e72;
+    font-size: 11px;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+/* Items preview (expériences ajoutées) */
+#previewea .preview-exp-item,
+#previewea .preview-formation-item {
+    margin-bottom: 15px;
+    font-size: 11px;
+}
+
+#previewea .preview-comp-item,
+#previewea .preview-loisir-item {
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+/* ✅ THÈME BLEU */
+.theme-blue #previewea .flex-shrink-0 {
+    background: linear-gradient(135deg, #003d82 0%, #0066cc 100%) !important;
+}
+
+.theme-blue #previewea .flex-shrink-0 h5,
+.theme-blue #previewea #p-headline {
+    color: #0066cc !important;
+}
+
+.theme-blue #previewea .flex-shrink-0 .skill-item,
+.theme-blue #previewea .flex-shrink-0 .loisir-item {
+    border-left-color: #0066cc !important;
+}
+
+.theme-blue #previewea .flex-grow-1 h5 {
+    border-bottom-color: #0066cc !important;
+}
+
+/* ✅ THÈME MODERNE */
+.theme-modern #previewea .flex-shrink-0 {
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%) !important;
+    border-right: 4px solid #e74c3c;
+}
+
+.theme-modern #previewea .flex-shrink-0 h5,
+.theme-modern #previewea #p-headline {
+    color: #e74c3c !important;
+}
+
+.theme-modern #previewea .flex-shrink-0 .skill-item,
+.theme-modern #previewea .flex-shrink-0 .loisir-item {
+    border-left-color: #e74c3c !important;
+}
+
+.theme-modern #previewea .flex-grow-1 h5 {
+    border-bottom-color: #e74c3c !important;
+}
+
+/* ✅ MODE CLAIR */
+[data-bs-theme="light"] #previewea .flex-shrink-0 {
+    background-color: #f0f4f8 !important;
+    color: #333 !important;
+}
+
+[data-bs-theme="light"] #previewea .flex-shrink-0 h5 {
+    color: #0fbcf9 !important;
+    border-bottom-color: #ddd !important;
+}
+
+[data-bs-theme="light"] #previewea .flex-shrink-0 p {
+    color: #555 !important;
+}
+
+[data-bs-theme="light"] #previewea hr {
+    border-color: #ddd !important;
+}
+
+[data-bs-theme="light"] #previewea .flex-grow-1 {
+    background-color: white !important;
+    color: #333 !important;
+}
+
+[data-bs-theme="light"] #previewea .flex-grow-1 h5 {
+    color: #333 !important;
+}

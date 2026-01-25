@@ -2,6 +2,7 @@ const htmlElement = document.documentElement;
 const mode = document.getElementById("mode");
 const iconMode = document.getElementById("icon");
 let compteur = 0;
+let niveauCompteur = 0;
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -62,8 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
 }*/
 function ajouterElement(type, champs, templateID) {
 
-    //lockInput(type);
-
+    niveauCompteur++;
     compteur++;
     const template = document.getElementById(templateID);
 
@@ -75,6 +75,7 @@ function ajouterElement(type, champs, templateID) {
 
     if (!formBlock || !previewBlock) return console.error("Structure du template incorrecte pour :", type);
 
+    // ✅ CRÉER DES IDS UNIQUES POUR CHAQUE ÉLÉMENT AJOUTÉ
     champs.forEach(element => {
         const cible = clone.querySelector(".p-" + element);
         const source = clone.querySelector("." + type + "-" + element);
@@ -84,11 +85,23 @@ function ajouterElement(type, champs, templateID) {
             source.dataset.target = "#" + uniqueId;
         }
     });
+
+    // ✅ SPÉCIAL POUR LES COMPÉTENCES - Créer aussi l'ID du niveau
+    if (type === 'comp') {
+        const niveauCible = clone.querySelector(".p-niveau");
+        const niveauSource = clone.querySelector(".comp-niveau");
+        if (niveauCible && niveauSource) {
+            const uniqueId = "p-niveau-" + niveauCompteur;
+            niveauCible.id = uniqueId;
+            niveauSource.dataset.target = "#" + uniqueId;
+        }
+    }
+
     const btnRemove = clone.querySelector(".remove-" + type);
     if (btnRemove) {
         btnRemove.style.border = "5px solid red";
         btnRemove.addEventListener("click", () => {
-            //  alert("Clic détecté sur la suppression de " + type);
+            alert("Clic détecté sur la suppression de " + type);
             formBlock.remove();
             previewBlock.remove();
         });
@@ -102,13 +115,11 @@ function ajouterElement(type, champs, templateID) {
         formList.appendChild(formBlock);
         previewList.appendChild(previewBlock);
         // On active la preview sur le nouveau bloc
-
         initPreview(formBlock);
     } else {
         console.error("Listes de réception introuvables pour :", type);
     }
 }
-
 
 function initPreview(conteneur) {
     const inputs = conteneur.querySelectorAll('input[data-target], textarea[data-target], select[data-target]');
@@ -313,6 +324,44 @@ function applyTheme(theme) {
     // Ajouter le thème sélectionné
     previewea.classList.add(`theme-${theme}`);
 }
+
+// ✅ GESTION DES TABS MOBILE - CORRECT
+const viewRadios = document.querySelectorAll('input[name="view-mobile"]');
+const sectionForm = document.getElementById('section-form');
+const sectionPreview = document.getElementById('section-preview');
+
+viewRadios.forEach(radio => {
+    radio.addEventListener('change', function () {
+        const selectedView = this.value;
+
+        // Sur mobile seulement
+        if (window.innerWidth <= 991) {
+            if (selectedView === 'form') {
+                sectionForm.style.display = 'block';
+                sectionPreview.style.display = 'none';
+            } else if (selectedView === 'preview') {
+                sectionForm.style.display = 'none';
+                sectionPreview.style.display = 'block';
+            }
+        }
+    });
+});
+
+// ✅ Au resize de la fenêtre, réafficher les deux sur desktop
+window.addEventListener('resize', function () {
+    if (window.innerWidth > 991) {
+        sectionForm.style.display = 'block';
+        sectionPreview.style.display = 'block';
+    }
+});
+
+// ✅ Au chargement, vérifier la taille
+window.addEventListener('DOMContentLoaded', function () {
+    if (window.innerWidth > 991) {
+        sectionForm.style.display = 'block';
+        sectionPreview.style.display = 'block';
+    }
+});
 
 // Initialiser avec le thème par défaut
 applyTheme('dark');

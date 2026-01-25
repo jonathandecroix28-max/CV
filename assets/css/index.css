@@ -13,7 +13,7 @@ textarea {
     color: white !important;
 }
 
-/* ✅ STICKY PREVIEW */
+/*Permet de garder la preview visible lors du scroll */
 .sticky-preview {
     position: -webkit-sticky;
     position: sticky;
@@ -36,7 +36,7 @@ textarea {
     transition: all 0.2s ease;
 }
 
-/* ✅ LOCKED STYLE - inputs verrouillés */
+
 .locked-style {
     background-color: #e8e8e8 !important;
     cursor: not-allowed !important;
@@ -44,8 +44,6 @@ textarea {
     color: #666 !important;
     opacity: 0.7;
 }
-
-/* ✅ AJOUT : Styles pour le mode clair */
 
 /* Mode clair : fond blanc et texte noir */
 [data-bs-theme="light"] {
@@ -128,4 +126,35 @@ textarea {
 [data-bs-theme="light"] .preview-focus {
     background-color: rgba(15, 188, 249, 0.15) !important;
     outline-color: #0fbcf9 !important;
+}
+
+/* ✅ TABS MOBILE - Cacher/Afficher avec media queries */
+@media (max-width: 991px) {
+
+    /* Par défaut, cacher la preview sur mobile */
+    #section-preview {
+        display: none !important;
+    }
+
+    #section-form {
+        display: block !important;
+    }
+
+    /* Quand preview est sélectionné, afficher preview et cacher formulaire */
+    #view-preview:checked~#main-content #section-preview {
+        display: block !important;
+    }
+
+    #view-preview:checked~#main-content #section-form {
+        display: none !important;
+    }
+}
+
+/* Toujours afficher les deux sections pour la partie bureau*/
+@media (min-width: 992px) {
+
+    #section-form,
+    #section-preview {
+        display: block !important;
+    }
 }
