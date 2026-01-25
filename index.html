@@ -226,6 +226,14 @@
                                     <label class="form-label form-label-sm">Compétences*</label>
                                     <input class="form-control form-control-sm lock w-100" type="text"
                                         name="competence[]" id="skills-input" data-target="#p-competence">
+                                    <select class="form-select form-select-sm mt-2 lock w-100" data-target="#p-niveau"
+                                        id="skills-level" aria-label="Niveau de compétence">
+                                        <option value="" selected disabled>Niveau de compétence</option>
+                                        <option value="Débutant">Débutant</option>
+                                        <option value="Intermédiaire">Intermédiaire</option>
+                                        <option value="Avancé">Avancé</option>
+                                        <option value="Expert">Expert</option>
+                                    </select>
                                     <div id="comp-form-list"></div>
                                 </div>
                                 <button type="button" class="btn btn-sm btn-success btn-add mt-2" data-type="comp"
@@ -303,6 +311,7 @@
                                 <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Compétences</h5>
                                 <div id="p-competence" class="small" style="font-size: 0.75rem;"
                                     data-default="Compétence"></div>
+                                <div id="p-niveau" class="small mb-2 text-muted" style="font-size: 0.65rem;"></div>
                                 <div id="comp-preview-list" class="small" style="font-size: 0.75rem;"></div>
                                 <hr class="my-2" style="border-color: #3d4852;">
                                 <!-- ✅ LOISIRS DANS SIDEBAR -->
@@ -442,15 +451,27 @@
         </div>
     </template>
 
+    <!-- ✅ TEMPLATE COMPETENCE - Corrigé -->
     <template id="temp-comp">
-        <div class="comp-item mb-2 mt-3 border-secondary rounded p-2">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-sm comp-competence" name="competence[]"
-                    placeholder="Compétence">
-                <button type="button" class="remove-comp btn btn-sm btn-danger">✕</button>
+        <div class="comp-item mb-2 mt-3 border border-secondary rounded p-2">
+            <div class="mb-2">
+                <div class="input-group input-group-sm mb-2">
+                    <input class="form-control form-control-sm comp-competence" name="competence[]"
+                        placeholder="Compétence" data-target="#p-competence">
+                    <button type="button" class="remove-comp btn btn-sm btn-danger">✕</button>
+                </div>
+                <select class="form-select form-select-sm comp-niveau" name="niveau[]" data-target="#p-niveau"
+                    aria-label="Niveau de compétence">
+                    <option value="" selected disabled>Niveau de compétence</option>
+                    <option value="Débutant">Débutant</option>
+                    <option value="Intermédiaire">Intermédiaire</option>
+                    <option value="Avancé">Avancé</option>
+                    <option value="Expert">Expert</option>
+                </select>
             </div>
-            <div class="preview-comp-item">
-                <span class="p-competence small">Compétence</span>
+            <div class="preview-comp-item small">
+                <span class="p-competence">Compétence</span>
+                <span class="p-niveau text-muted"> - Niveau</span>
             </div>
         </div>
     </template>

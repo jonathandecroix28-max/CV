@@ -88,7 +88,7 @@ function ajouterElement(type, champs, templateID) {
     if (btnRemove) {
         btnRemove.style.border = "5px solid red";
         btnRemove.addEventListener("click", () => {
-            alert("Clic détecté sur la suppression de " + type);
+            //  alert("Clic détecté sur la suppression de " + type);
             formBlock.remove();
             previewBlock.remove();
         });
@@ -109,7 +109,7 @@ function ajouterElement(type, champs, templateID) {
     }
 }
 
-// ✅ MISE À JOUR CORRIGÉE - Sans boucle infinie
+
 function initPreview(conteneur) {
     const inputs = conteneur.querySelectorAll('input[data-target], textarea[data-target], select[data-target]');
 
