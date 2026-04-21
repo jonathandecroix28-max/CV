@@ -16,7 +16,8 @@
     color: #0fbcf9 !important;
 }
 
-.theme-dark .text-info {
+.theme-dark .text-info,
+.theme-dark .color {
     color: #0fbcf9 !important;
 }
 

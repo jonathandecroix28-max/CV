@@ -40,11 +40,30 @@ body {
 }
 
 .sidebar {
-    width: 30%;
+    width: 30% !important;
+
+    background-color: #1e272e;
+    color: white;
+    padding: 20px 15px;
     vertical-align: top;
-    padding: 30px 15px;
-    color: #ffffff;
-    background: #1e272e;
+    font-size: 9px;
+
+}
+
+.sidebar h1 {
+    font-size: 22px;
+}
+
+.sidebar h2 {
+    font-size: 13px;
+}
+
+.sidebar-text,
+.skill-item,
+.contact-item {
+    font-size: 14px;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .sidebar h1 {
@@ -93,6 +112,7 @@ body {
     vertical-align: top;
     padding: 30px 25px;
     background: white;
+    font-size: 12px;
 }
 
 .initials-circle {
@@ -136,16 +156,17 @@ body {
 }
 
 .headline {
-    font-size: 14px;
+    font-size: 20px;
     color: #0fbcf9;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .main h2 {
     color: #1e272e;
     border-bottom: 2px solid #0fbcf9;
-    font-size: 15px;
+    font-size: 16px;
     margin-top: 25px;
     margin-bottom: 12px;
     text-transform: uppercase;
@@ -159,7 +180,7 @@ body {
 
 .item-title {
     font-weight: bold;
-    font-size: 12px;
+    font-size: 18px;
     margin-bottom: 3px;
 }
 
@@ -172,7 +193,7 @@ body {
 
 .item-desc-main {
     color: #636e72;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.4;
     text-align: justify;
 }

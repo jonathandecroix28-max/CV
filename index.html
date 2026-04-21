@@ -64,21 +64,23 @@
 
     <!-- MAIN -->
     <main class="container-fluid flex-grow-1 py-2">
-        <div class="d-lg-none mb-2">
-            <div class="btn-group w-100" role="group">
-                <input type="radio" class="btn-check" name="view-mobile" id="view-form" value="form" checked>
-                <label class="btn btn-outline-info btn-sm w-50" for="view-form">
-                    <i class="bi bi-pencil-square"></i> Formulaire
-                </label>
 
-                <input type="radio" class="btn-check" name="view-mobile" id="view-preview" value="preview">
-                <label class="btn btn-outline-info btn-sm w-50" for="view-preview">
-                    <i class="bi bi-eye"></i> Aperçu
-                </label>
-            </div>
-        </div>
         <div class="row g-2 h-100" id="main-content">
             <!-- FORMULAIRE -->
+            <div class="d-lg-none mb-2">
+                <div class="btn-group w-100" role="group">
+                    <input type="radio" class="btn-check" name="view-mobile" id="view-form" value="form" checked>
+                    <label class="btn btn-outline-info btn-sm w-50" for="view-form">
+                        <i class="bi bi-pencil-square"></i> Formulaire
+                    </label>
+
+                    <input type="radio" class="btn-check" name="view-mobile" id="view-preview" value="preview">
+                    <label class="btn btn-outline-info btn-sm w-50" for="view-preview">
+                        <i class="bi bi-eye"></i> Aperçu
+                    </label>
+                </div>
+            </div>
+
             <section class="col-12 col-lg-6 px-1 view-section" id="section-form">
                 <div class="card bg-dark border-secondary h-100 shadow-sm">
                     <div class="card-header bg-darker border-secondary p-2">
@@ -240,7 +242,7 @@
                                     <input class="form-control form-control-sm lock w-100" type="text"
                                         name="competence[]" id="skills-input" data-target="#p-competence">
                                     <select class="form-select form-select-sm mt-2 lock w-100" data-target="#p-niveau"
-                                        id="skills-level" aria-label="Niveau de compétence">
+                                        id="skills-level" aria-label="Niveau de compétence" name="niveau[]">
                                         <option value="" selected disabled>Niveau de compétence</option>
                                         <option value="Débutant">Débutant</option>
                                         <option value="Intermédiaire">Intermédiaire</option>
@@ -284,7 +286,7 @@
             </section>
 
             <!-- PREVIEW -->
-            <section class="col-12 col-lg-6 px-1 view-section" id="section-preview" style="display: none;">
+            <section class="col-12 col-lg-6 px-1 view-section" id="section-preview">
                 <div class="card h-100 shadow-sm">
                     <div class="card-header p-2">
                         <h2 class="m-0 h2 text-muted text-center">
@@ -293,72 +295,93 @@
                     </div>
                     <div class="card-body p-0" style="overflow: hidden; height: calc(100vh - 130px);">
                         <div class="w-100 h-100 bg-white" id="previewea" style="display: flex;">
-                            <!-- SIDEBAR -->
-                            <!-- SIDEBAR -->
+                            <!-- premiere colonne -->
                             <div class="flex-shrink-0 p-2"
-                                style="width: 32%; background-color: #1e272e; color: white; overflow-y: auto;">
+                                style="width: 32%; background-color: #1e272e; color: white; overflow-y: auto; font-size: 0.8rem;">
                                 <div class="text-center mb-2">
                                     <div id="p-initials"
                                         class="rounded-circle border border-2 border-info d-flex align-items-center justify-content-center mx-auto mb-2"
-                                        style="width: 80px; height: 80px; color: #0fbcf9; background-color: rgba(15, 188, 249, 0.1);">
+                                        style="width: 60px; height: 60px; font-size: 1.1rem; color: #0fbcf9; background-color: rgba(15, 188, 249, 0.1);">
                                         CV
                                     </div>
                                     <img id="p-photo" src="" alt="Photo"
                                         class="rounded-circle border border-2 border-info mx-auto mb-2 d-none"
-                                        style="width: 80px; height: 80px; object-fit: cover;">
+                                        style="width: 60px; height: 60px; object-fit: cover;">
                                 </div>
                                 <h4 id="p-full-name" class="fw-bold text-uppercase text-center mb-2"
                                     data-default="NOM Prénom">
                                     NOM Prénom
                                 </h4>
-                                <h5 class="text-info text-uppercase mb-2">Profil</h5>
+
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Profil</h5>
+                                <hr class="my-2" style="border-color: #3d4852;">
                                 <p id="p-description" class="small" data-default="Description"
-                                    style="white-space: pre-line;">Description</p>
+                                    style="white-space: pre-line; font-size: 0.75rem;">Description</p>
 
-                                <h5 class="text-info text-uppercase mb-2">Contact</h5>
-                                <p class="small mb-1">📧 <span id="p-email"
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Contact</h5>
+                                <hr class="my-2" style="border-color: #3d4852;">
+                                <p class="small mb-1" style="font-size: 0.75rem;">📧 <span id="p-email"
                                         data-default="email@exemple.com">email@exemple.com</span></p>
-                                <p class="small mb-2">📞 <span id="p-numero" data-default="+33">+33</span></p>
+                                <p class="small mb-2" style="font-size: 0.75rem;">📞 <span id="p-numero"
+                                        data-default="+33">+33</span></p>
 
-                                <h5 class="text-info text-uppercase mb-2">Compétences</h5>
-                                <div id="p-competence" class="small" data-default="Compétence"></div>
-                                <div id="p-niveau" class="small mb-2 text-muted"></div>
-                                <div id="comp-preview-list" class="small"></div>
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Compétences</h5>
+                                <hr class="my-2" style="border-color: #3d4852;">
+                                <div class="comp-item mb-2">
+                                    <div class="small border-start border-info border-3" style="font-size: 0.75rem;">
+                                        <span id="p-competence" style="padding-left: 8px;"
+                                            data-default="Compétence">Compétence</span>
+                                        <span id="p-niveau" class="text-muted" data-default="Niveau"> - Niveau</span>
+                                    </div>
+                                </div>
+                                <div id="comp-preview-list" class="small" style="font-size: 0.75rem;"></div>
 
-                                <h5 class="text-info text-uppercase mb-2">Loisirs</h5>
-                                <p id="p-loisir" class="small" data-default="Loisir">Loisir</p>
-                                <div id="loisir-preview-list" class="small"></div>
+                                <!-- ajout de loisir -->
+                                <h5 class="text-info text-uppercase mb-2" style="font-size: 0.75rem;">Loisirs</h5>
+                                <hr class="my-2" style="border-color: #3d4852;">
+                                <p id="p-loisir" class="small border-start border-info border-3 "
+                                    style="padding-left: 8px;" data-default="Loisir" style="font-size: 0.75rem;">Loisir
+                                </p>
+                                <div id="loisir-preview-list" class="small" style="font-size: 0.75rem;"></div>
                             </div>
 
-                            <!-- MAIN CONTENT -->
-                            <div class="flex-grow-1 p-2" style="background-color: white; overflow-y: auto;">
-                                <p id="p-headline" class="small text-info mb-2" data-default="Titre du poste">Titre du
-                                    poste</p>
+                            <!-- contenue pricipal -->
+                            <div class="flex-grow-1 p-2"
+                                style="background-color: white; overflow-y: auto; font-size: 0.95rem;">
+                                <p id="p-headline" class="small text-info mb-2 text-center fw-bold"
+                                    data-default="Titre du poste" style="font-size: 1.2rem;">Titre du poste</p>
+                                <h5 class="text-dark text-uppercase small pb-1 mb-2"
+                                    style="font-size: 0.8rem; border-bottom: 2px solid;">Expériences Professionnelles
+                                </h5>
 
-                                <h5 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2">
-                                    EXPÉRIENCES</h5>
-                                <p id="p-poste" class="small fw-bold mb-0" data-default="Poste">Poste</p>
-                                <p id="p-entreprise" class="small text-info mb-0" data-default="Entreprise">Entreprise
+                                <p id="p-poste" class="small fw-bold text-black mb-0" data-default="Poste"
+                                    style="font-size: 0.75rem;">Poste</p>
+                                <p class="small mb-2 color" style="font-size: 0.7rem;">
+                                    <span id="p-entreprise" class="text-info"
+                                        data-default="Entreprise">Entreprise</span> |
+                                    <span id="p-debut" data-default="Début">Début</span> au
+                                    <span id="p-fin" data-default="Fin">Fin</span>
                                 </p>
-                                <p class="small mb-2"><span id="p-debut" data-default="Début">Début</span> - <span
-                                        id="p-fin" data-default="Fin">Fin</span></p>
-                                <p id="p-desc-mission" class="small text-secondary" data-default="Description">
-                                    Description</p>
-                                <div id="exp-preview-list" class="small"></div>
+                                <p id="p-desc-mission" class="small text-secondary" data-default="Description"
+                                    style="font-size: 0.7rem;">Description</p>
+                                <div id="exp-preview-list" class="small" style="font-size: 0.7rem;"></div>
 
-                                <h5 class="text-dark text-uppercase small border-bottom border-info pb-1 mb-2 mt-2">
-                                    FORMATION</h5>
-                                <p id="p-diplome" class="small fw-bold mb-0" data-default="Diplôme">Diplôme</p>
-                                <p id="p-etablissement" class="small text-info mb-0" data-default="Établissement">
-                                    Établissement</p>
-                                <p class="small mb-2"><span id="p-start" data-default="Début">Début</span> - <span
-                                        id="p-end" data-default="Fin">Fin</span></p>
-                                <p id="p-form" class="small text-secondary" data-default="Description">Description</p>
-                                <div id="formation-preview-list" class="small"></div>
+                                <h5 class="text-dark text-uppercase small pb-1 mb-2"
+                                    style="font-size: 0.8rem; border-bottom: 2px solid;">FORMATION</h5>
+                                <p id="p-diplome" class="small fw-bold mb-0 text-black" data-default="Diplôme"
+                                    style="font-size: 0.75rem;">Diplôme</p>
+                                <p class="small mb-2 color" style="font-size: 0.7rem;">
+                                    <span id="p-etablissement" class="text-info"
+                                        data-default="Établissement">Établissement</span> |
+                                    <span id="p-start" data-default="Début">Début</span> au
+                                    <span id="p-end" data-default="Fin">Fin</span>
+                                </p>
+                                <p id="p-form" class="small text-secondary" data-default="Description"
+                                    style="font-size: 0.7rem;">Description</p>
+                                <div id="formation-preview-list" class="small" style="font-size: 0.7rem;"></div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
         </div>
     </main>
@@ -405,11 +428,12 @@
                 </div>
             </div>
 
-            <div class="preview-exp-item small">
-                <p class="p-poste fw-bold mb-0">Poste</p>
-                <p class="p-entreprise text-info small mb-0">Entreprise</p>
-                <p class="small mb-2"><span class="p-debut">Début</span> - <span class="p-fin">Fin</span></p>
-                <p class="p-missions small">Description</p>
+            <div class="preview-exp-item small" style="font-size: 0.7rem;">
+                <p class="p-poste fw-bold mb-0 text-black" style="font-size: 0.75rem;">Poste</p>
+                <p class="small mb-2 color" style="font-size: 0.7rem;"><span
+                        class="p-entreprise text-info">Entreprise</span> | <span class="p-debut">Début</span> au <span
+                        class="p-fin">Fin</span></p>
+                <p class="p-missions text-secondary small" style="font-size: 0.7rem;">Description</p>
             </div>
         </div>
     </template>
@@ -447,11 +471,13 @@
                 </div>
             </div>
 
-            <div class="preview-formation-item small">
-                <p class="p-diplome fw-bold mb-0">Diplôme</p>
-                <p class="p-etablissement text-info small mb-0">Établissement</p>
-                <p class="small mb-2"><span class="p-start">Début</span> - <span class="p-end">Fin</span></p>
-                <p class="p-desc small">Description</p>
+            <div class="preview-formation-item small text-black" style="font-size: 0.7rem;">
+                <p class="p-diplome fw-bold mb-0" style="font-size: 0.75rem;">Diplôme</p>
+                <p class="small mb-2 color" style="font-size: 0.7rem;"><span
+                        class="p-etablissement text-info">Établissement</span> | <span class="p-start">Début</span> au
+                    <span class="p-end">Fin</span>
+                </p>
+                <p class="p-desc text-secondary small" style="font-size: 0.7rem;">Description</p>
             </div>
         </div>
     </template>
@@ -474,7 +500,7 @@
                     <option value="Expert">Expert</option>
                 </select>
             </div>
-            <div class="preview-comp-item small">
+            <div class="preview-comp-item small border-info" style="font-size: 0.75rem;">
                 <span class="p-competence">Compétence</span>
                 <span class="p-niveau text-muted"> - Niveau</span>
             </div>
@@ -488,7 +514,7 @@
                 <input class="form-control form-control-sm loisir-loisir" name="loisir[]" placeholder="Loisir">
                 <button type="button" class="remove-loisir btn btn-sm btn-danger">✕</button>
             </div>
-            <div class="preview-loisir-item">
+            <div class="preview-loisir-item border-info" style="font-size: 0.8rem;">
                 <span class="p-loisir small">Loisir</span>
             </div>
         </div>

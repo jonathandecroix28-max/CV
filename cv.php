@@ -14,78 +14,77 @@
     <div class="sidebar-bg"></div>
     <table class="wrapper">
         <tr>
-            <!-- SIDEBAR -->
             <td class="sidebar">
-                <!-- Photo / Initiales -->
                 <div class="initials-circle">
                     <table class="initials-center-table">
                         <tr>
                             <td>
-                                <div class="photo-container">
-                                    <?php if (!empty($photo_base64)): ?>
+                                <?php if (!empty($photo_base64)): ?>
+                                    <div class="photo-container">
                                         <img src="<?php echo $photo_base64; ?>" alt="Photo de profil">
-                                    <?php else: ?>
-                                        <div class="initials-div">
-                                            <?php echo strtoupper(substr($prenom ?? '', 0, 1) . substr($nom ?? '', 0, 1)); ?>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
+                                    </div>
+                                <?php else: ?>
+                                    <div style="font-size: 30px; color: #0fbcf9;">
+                                        <?php echo strtoupper(substr($prenom ?? '', 0, 1) . substr($nom ?? '', 0, 1)); ?>
+                                    </div>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     </table>
                 </div>
-
-                <!-- Nom -->
-                <h1><?php echo htmlspecialchars(($_POST['prenom'] ?? '') . ' ' . ($_POST['nom'] ?? '')); ?></h1>
-
-                <!-- Profil -->
+                <h1>
+                    <?php echo htmlspecialchars(($_POST['prenom'] ?? '') . ' ' . ($_POST['nom'] ?? '')); ?>
+                </h1>
                 <h2>Profil</h2>
-                <div class="sidebar-text">
-                    <?php echo nl2br(htmlspecialchars($_POST['description'] ?? '')); ?>
-                </div>
-
-                <!-- Contact -->
+                <div class="sidebar-text"><?php echo nl2br(htmlspecialchars($_POST['description'] ?? '')); ?></div>
                 <h2>Contact</h2>
                 <div class="contact-item">
-                    <span style="color: #ffffffff;">&#9742;</span>
-                    <?php echo htmlspecialchars($_POST['numero'] ?? ''); ?>
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/mail.png" width="12"
+                        style="margin-right: 5px;">
+                    <?php echo htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
                 </div>
                 <div class="contact-item">
-                    <span style="color: #ffffffff;">&#9993;</span>
-                    <?php echo htmlspecialchars($_POST['email'] ?? ''); ?>
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" width="12"
+                        style="margin-right: 5px;">
+                    <?php echo htmlspecialchars($_POST['numero'] ?? '', ENT_QUOTES, 'UTF-8'); ?>
                 </div>
-
-                <!-- Compétences -->
                 <h2>Compétences</h2>
                 <?php
                 if (isset($_POST['competence']) && is_array($_POST['competence'])):
-                    foreach ($_POST['competence'] as $skill):
+                    foreach ($_POST['competence'] as $idx => $skill):
                         if (!empty(trim($skill))): ?>
-                            <div class="skill-item">
-                                <?php echo htmlspecialchars($skill); ?>
+                            <div class="skill-item" style="border-left: 3px solid #0fbcf9; padding-left: 8px;">
+                                <strong><?php echo htmlspecialchars($skill); ?></strong>
+                                <?php if (!empty($_POST['niveau'][$idx])): ?>
+                                    <br><small><?php echo htmlspecialchars($_POST['niveau'][$idx]); ?></small>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif;
+                    endforeach;
+                endif;
+                ?>
+                <h2>Loisirs</h2>
+                <?php
+                if (isset($_POST['loisir']) && is_array($_POST['loisir'])):
+                    foreach ($_POST['loisir'] as $loisir):
+                        if (!empty(trim($loisir))): ?>
+                            <div class="skill-item" style="border-left: 3px solid #0fbcf9; padding-left: 8px;">
+                                <?php echo htmlspecialchars($loisir); ?>
                             </div>
                         <?php endif;
                     endforeach;
                 endif;
                 ?>
             </td>
-
-            <!-- MAIN CONTENT -->
             <td class="main">
-                <!-- Headline -->
-                <div class="headline">
-                    <?php echo htmlspecialchars($_POST['headline'] ?? ''); ?>
-                </div>
+                <div class="headline"><?php echo htmlspecialchars($_POST['headline'] ?? ''); ?></div>
 
-                <!-- Expériences Professionnelles -->
                 <h2>Expériences Professionnelles</h2>
                 <?php if (!empty($_POST['poste'])): ?>
                     <?php foreach ($_POST['poste'] as $idx => $poste): ?>
                         <div class="item">
-                            <div class="item-title">
-                                <?php echo htmlspecialchars($poste); ?>
-                            </div>
-                            <div class="item-meta">
+                            <div class="item-title" style="color: #333;"><?php echo htmlspecialchars($poste); ?></div>
+                            <div class="item-meta" style="color: #0fbcf9;">
                                 <?php echo htmlspecialchars($_POST['entreprise'][$idx] ?? ''); ?> |
                                 <?php echo htmlspecialchars($_POST['date'][$idx] ?? ''); ?> au
                                 <?php echo htmlspecialchars($_POST['fin'][$idx] ?? ''); ?>
@@ -97,15 +96,12 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
 
-                <!-- Formation -->
                 <h2>Formation</h2>
                 <?php if (!empty($_POST['formation'])): ?>
-                    <?php foreach ($_POST['formation'] as $idx => $f): ?>
+                    <?php foreach ($_POST['formation'] as $idx => $formation): ?>
                         <div class="item">
-                            <div class="item-title">
-                                <?php echo htmlspecialchars($f); ?>
-                            </div>
-                            <div class="item-meta">
+                            <div class="item-title" style="color: #333;"><?php echo htmlspecialchars($formation); ?></div>
+                            <div class="item-meta" style="color: #0fbcf9;">
                                 <?php echo htmlspecialchars($_POST['etablissement'][$idx] ?? ''); ?> |
                                 <?php echo htmlspecialchars($_POST['datef'][$idx] ?? ''); ?> au
                                 <?php echo htmlspecialchars($_POST['finf'][$idx] ?? ''); ?>

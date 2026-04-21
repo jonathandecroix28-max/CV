@@ -17,7 +17,8 @@
     font-weight: 600 !important;
 }
 
-.theme-blue .text-info {
+.theme-blue .text-info,
+.theme-blue .color {
     color: #0066cc !important;
 }
 

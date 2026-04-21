@@ -2,11 +2,27 @@
 require 'vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
-
+// Génération du pseudo pour le nom du fichier PDF
 $user = $_POST['nom'] . " " . $_POST['prenom'];
 $user_propre = trim($user);
 $user_final = preg_replace('/[^a-z0-9]/', '_', strtolower($user_propre));
 $pseudo_cv = preg_replace('/_+/', '_', $user_final);
+// Génération du pseudo pour le titre du CV
+$headline = $_POST['headline'];
+$headline_propre = trim($headline);
+$headline_final = preg_replace('/[^a-z0-9]/', '_', strtolower($headline_propre));
+$pseudo_headline = preg_replace('/_+/', '_', $headline_final);
+
+
+if (empty($_POST['nom']) || empty($_POST['prenom'])) {
+    die("Le nom et le prénom sont requis pour générer le CV.");
+}
+
+
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Méthode de requête invalide.");
+}
 
 $options = new Options();
 $options->set('isRemoteEnabled', true);
@@ -26,6 +42,7 @@ if (!in_array($theme, $validThemes)) {
 
 ob_start();
 //include ""cv.php";
+// inclusion dynamique du thème choisi
 include "cv-{$theme}.php";
 $html = ob_get_clean();
 $html = trim($html);
@@ -42,7 +59,7 @@ $fontSize = 10;
 while (ob_get_level()) {
     ob_end_clean();
 }
-
-$dompdf->stream("le_cv_de_{$pseudo_cv}.pdf", ["Attachment" => true]);
+// nom de pdf custom
+$dompdf->stream("Cv_{$pseudo_headline}_{$pseudo_cv}.pdf", ["Attachment" => true]);
 
 exit;

@@ -20,9 +20,16 @@
     letter-spacing: 1px;
 }
 
-.theme-modern .text-info {
+#p-full-name {
+    color: #FFFFFF !important;
+}
+
+.theme-modern .text-info,
+.theme-modern .color {
     color: #e74c3c !important;
 }
+
+
 
 .theme-modern .text-uppercase {
     color: #e74c3c !important;

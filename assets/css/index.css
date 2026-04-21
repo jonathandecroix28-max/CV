@@ -129,32 +129,26 @@ textarea {
 }
 
 /* ✅ TABS MOBILE - Cacher/Afficher avec media queries */
+/* ✅ MOBILE - Caché par défaut, montré par défaut pour formulaire */
 @media (max-width: 991px) {
-
-    /* Par défaut, cacher la preview sur mobile */
     #section-preview {
         display: none !important;
     }
 
-    #section-form {
+    .d-lg-none {
         display: block !important;
-    }
-
-    /* Quand preview est sélectionné, afficher preview et cacher formulaire */
-    #view-preview:checked~#main-content #section-preview {
-        display: block !important;
-    }
-
-    #view-preview:checked~#main-content #section-form {
-        display: none !important;
     }
 }
 
-/* Toujours afficher les deux sections pour la partie bureau*/
+/* ✅ DESKTOP - Les deux visibles */
 @media (min-width: 992px) {
 
     #section-form,
     #section-preview {
         display: block !important;
+    }
+
+    .d-lg-none {
+        display: none !important;
     }
 }
