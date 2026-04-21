@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     freetype-dev \
     libjpeg-turbo-dev \
     libwebp-dev \
+    libxml2-dev \
     libzip-dev \
     oniguruma-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
