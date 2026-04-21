@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cv-generator
+    env: php
+    plan: free
+    buildCommand: composer install --no-interaction --prefer-dist --optimize-autoloader
+    startCommand: php -S 0.0.0.0:$PORT -t .
+    envVars:
+      - key: PHP_VERSION
+        value: 8.3
